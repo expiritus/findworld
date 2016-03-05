@@ -1,0 +1,376 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Lost
+ *
+ * @ORM\Table(name="lost")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\LostRepository")
+ */
+class Lost
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="thing_id", type="integer")
+     */
+    private $thingId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="file_name", type="string", length=255, nullable=true)
+     */
+    private $fileName;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     */
+    private $userId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="country_id", type="integer", nullable=true)
+     */
+    private $countryId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="city_id", type="integer", nullable=true)
+     */
+    private $cityId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="area_id", type="integer", nullable=true)
+     */
+    private $areaId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="street_id", type="integer", nullable=true)
+     */
+    private $streetId;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="status", type="boolean")
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updatedAt;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set thingId
+     *
+     * @param integer $thingId
+     *
+     * @return Lost
+     */
+    public function setThingId($thingId)
+    {
+        $this->thingId = $thingId;
+
+        return $this;
+    }
+
+    /**
+     * Get thingId
+     *
+     * @return int
+     */
+    public function getThingId()
+    {
+        return $this->thingId;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Lost
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set fileName
+     *
+     * @param string $fileName
+     *
+     * @return Lost
+     */
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
+
+        return $this;
+    }
+
+    /**
+     * Get fileName
+     *
+     * @return string
+     */
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     *
+     * @return Lost
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return int
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set countryId
+     *
+     * @param integer $countryId
+     *
+     * @return Lost
+     */
+    public function setCountryId($countryId)
+    {
+        $this->countryId = $countryId;
+
+        return $this;
+    }
+
+    /**
+     * Get countryId
+     *
+     * @return int
+     */
+    public function getCountryId()
+    {
+        return $this->countryId;
+    }
+
+    /**
+     * Set cityId
+     *
+     * @param integer $cityId
+     *
+     * @return Lost
+     */
+    public function setCityId($cityId)
+    {
+        $this->cityId = $cityId;
+
+        return $this;
+    }
+
+    /**
+     * Get cityId
+     *
+     * @return int
+     */
+    public function getCityId()
+    {
+        return $this->cityId;
+    }
+
+    /**
+     * Set areaId
+     *
+     * @param integer $areaId
+     *
+     * @return Lost
+     */
+    public function setAreaId($areaId)
+    {
+        $this->areaId = $areaId;
+
+        return $this;
+    }
+
+    /**
+     * Get areaId
+     *
+     * @return int
+     */
+    public function getAreaId()
+    {
+        return $this->areaId;
+    }
+
+    /**
+     * Set streetId
+     *
+     * @param integer $streetId
+     *
+     * @return Lost
+     */
+    public function setStreetId($streetId)
+    {
+        $this->streetId = $streetId;
+
+        return $this;
+    }
+
+    /**
+     * Get streetId
+     *
+     * @return int
+     */
+    public function getStreetId()
+    {
+        return $this->streetId;
+    }
+
+    /**
+     * Set status
+     *
+     * @param boolean $status
+     *
+     * @return Lost
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return bool
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Lost
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Lost
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+}
+

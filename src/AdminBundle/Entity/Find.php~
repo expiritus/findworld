@@ -1,0 +1,101 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Find
+ *
+ * @ORM\Table(name="find")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\FindRepository")
+ */
+class Find
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="thing_id", type="integer")
+     */
+    private $thingId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="file_name", type="string", length=255, nullable=true)
+     */
+    private $fileName;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     */
+    private $userId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="country_id", type="integer", nullable=true)
+     */
+    private $countryId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="city_id", type="integer", nullable=true)
+     */
+    private $cityId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="area_id", type="integer", nullable=true)
+     */
+    private $areaId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="street_id", type="integer", nullable=true)
+     */
+    private $streetId;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="status", type="boolean")
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     */
+    private $updatedAt;
+}
+
