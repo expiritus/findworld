@@ -1,3 +1,13 @@
+main:
+    resource: "@MainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+personal_area:
+    resource: "@PersonalAreaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation

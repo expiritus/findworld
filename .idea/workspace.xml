@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ecf618d-c3cf-418e-bac3-d316bb9db976" name="Default" comment="" />
+    <list default="true" id="9ecf618d-c3cf-418e-bac3-d316bb9db976" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Area.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Area.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/City.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/City.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Country.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Country.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Find.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Find.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Lost.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Lost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Street.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Street.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Thing.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Thing.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="findworld.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -25,20 +38,20 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.5">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state vertical-scroll-proportion="-16.875">
+              <caret line="66" column="7" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="7" />
               <folding>
-                <element signature="e#116#158#0#PHP" expanded="true" />
+                <element signature="e#116#164#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state vertical-scroll-proportion="-14.375">
+              <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -47,18 +60,18 @@
       <file leaf-file-name="Lost.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Lost.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="50.625">
-              <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+            <state vertical-scroll-proportion="-21.25">
+              <caret line="175" column="5" selection-start-line="175" selection-start-column="5" selection-end-line="175" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Find.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Find.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Find.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625">
-              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.4843918">
+              <caret line="222" column="42" selection-start-line="222" selection-start-column="42" selection-end-line="222" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -67,9 +80,11 @@
       <file leaf-file-name="Country.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Country.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625">
-              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="-32.5">
+              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <folding>
+                <element signature="e#38#86#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,9 +92,11 @@
       <file leaf-file-name="City.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/City.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625">
-              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="-28.125">
+              <caret line="113" column="5" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+              <folding>
+                <element signature="e#38#86#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,9 +104,11 @@
       <file leaf-file-name="Area.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Area.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.75">
-              <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-              <folding />
+            <state vertical-scroll-proportion="-27.5">
+              <caret line="111" column="27" selection-start-line="111" selection-start-column="27" selection-end-line="111" selection-end-column="27" />
+              <folding>
+                <element signature="e#38#86#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,7 +118,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
-              <folding />
+              <folding>
+                <marker date="1457203503499" expanded="true" signature="0:967" placeholder="security:" />
+                <marker date="1457203503499" expanded="true" signature="281:700" placeholder="main:" />
+                <marker date="1457203503499" expanded="true" signature="705:967" placeholder="access_control:" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,42 +130,49 @@
       <file leaf-file-name="Thing.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Thing.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625">
-              <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="-26.875">
+              <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+              <folding>
+                <element signature="e#38#86#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Street.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Street.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Street.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38751346">
-              <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
-              <folding />
+            <state vertical-scroll-proportion="-23.125">
+              <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+              <folding>
+                <element signature="e#38#86#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Find.php" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Lost.php" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Thing.php" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Street.php" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Country.php" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Entity/City.php" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Area.php" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Street.php" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Lost.php" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Find.php" />
       </list>
     </option>
   </component>
@@ -160,7 +190,7 @@
     <option name="width" value="1855" />
     <option name="height" value="1056" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -233,38 +263,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="findworld" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="findworld" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="findworld" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="findworld" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -274,6 +272,8 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -305,12 +305,20 @@
       <option name="number" value="Default" />
       <updated>1457202172147</updated>
     </task>
+    <task id="LOCAL-00001" summary="commit under phpstorm">
+      <created>1457205519125</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1457205519125</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -334,6 +342,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit under phpstorm" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit under phpstorm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -369,7 +381,7 @@
         <state vertical-scroll-proportion="-7.0">
           <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
           <folding>
-            <marker date="1457202819285" expanded="true" signature="-1:-1" placeholder="swiftmailer:" />
+            <marker date="1457210410512" expanded="true" signature="-1:-1" placeholder="swiftmailer:" />
           </folding>
         </state>
       </provider>
@@ -390,76 +402,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/User.php">
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.5">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
           <folding>
-            <element signature="e#116#158#0#PHP" expanded="true" />
+            <marker date="1457203503499" expanded="true" signature="0:967" placeholder="security:" />
+            <marker date="1457203503499" expanded="true" signature="281:700" placeholder="main:" />
+            <marker date="1457203503499" expanded="true" signature="705:967" placeholder="access_control:" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Thing.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Find.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
+        <state vertical-scroll-proportion="-26.875">
+          <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+          <folding>
+            <element signature="e#38#86#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Country.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
+        <state vertical-scroll-proportion="-32.5">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding>
+            <element signature="e#38#86#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/City.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
+        <state vertical-scroll-proportion="-28.125">
+          <caret line="113" column="5" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+          <folding>
+            <element signature="e#38#86#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Area.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.75">
-          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-          <folding />
+        <state vertical-scroll-proportion="-27.5">
+          <caret line="111" column="27" selection-start-line="111" selection-start-column="27" selection-end-line="111" selection-end-column="27" />
+          <folding>
+            <element signature="e#38#86#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Street.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+        <state vertical-scroll-proportion="-23.125">
+          <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+          <folding>
+            <element signature="e#38#86#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.375">
+          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Lost.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="50.625">
-          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+        <state vertical-scroll-proportion="-21.25">
+          <caret line="175" column="5" selection-start-line="175" selection-start-column="5" selection-end-line="175" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Street.php">
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38751346">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+        <state vertical-scroll-proportion="-16.875">
+          <caret line="66" column="7" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="7" />
+          <folding>
+            <element signature="e#116#164#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Find.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4843918">
+          <caret line="222" column="42" selection-start-line="222" selection-start-column="42" selection-end-line="222" selection-end-column="42" />
           <folding />
         </state>
       </provider>

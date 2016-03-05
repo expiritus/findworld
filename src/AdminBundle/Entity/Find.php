@@ -98,6 +98,63 @@ class Find
      */
     private $updatedAt;
 
+
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Thing", inversedBy="finds")
+     * @ORM\JoinColumn(name="thing_id", referencedColumnName="id")
+     *
+     * */
+    protected $thing;
+
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="finds")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     *
+     * */
+    protected $country;
+
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="finds")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     *
+     *
+     * */
+    protected $city;
+
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Area", inversedBy="finds")
+     * @ORM\JoinColumn(name="area_id", referencedColumnName="id")
+     *
+     * */
+    protected $area;
+
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Street", inversedBy="finds")
+     * @ORM\JoinColumn(name="street_id", referencedColumnName="id")
+     *
+     * */
+    protected $street;
+
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="finds")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *
+     *
+     * */
+    protected $user;
+
     /**
      * Get id
      *
@@ -370,5 +427,149 @@ class Find
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set thing
+     *
+     * @param \AdminBundle\Entity\Thing $thing
+     *
+     * @return Find
+     */
+    public function setThing(\AdminBundle\Entity\Thing $thing = null)
+    {
+        $this->thing = $thing;
+
+        return $this;
+    }
+
+    /**
+     * Get thing
+     *
+     * @return \AdminBundle\Entity\Thing
+     */
+    public function getThing()
+    {
+        return $this->thing;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \AdminBundle\Entity\Country $country
+     *
+     * @return Find
+     */
+    public function setCountry(\AdminBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \AdminBundle\Entity\Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set city
+     *
+     * @param \AdminBundle\Entity\City $city
+     *
+     * @return Find
+     */
+    public function setCity(\AdminBundle\Entity\City $city = null)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \AdminBundle\Entity\City
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set area
+     *
+     * @param \AdminBundle\Entity\Area $area
+     *
+     * @return Find
+     */
+    public function setArea(\AdminBundle\Entity\Area $area = null)
+    {
+        $this->area = $area;
+
+        return $this;
+    }
+
+    /**
+     * Get area
+     *
+     * @return \AdminBundle\Entity\Area
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
+
+    /**
+     * Set street
+     *
+     * @param \AdminBundle\Entity\Street $street
+     *
+     * @return Find
+     */
+    public function setStreet(\AdminBundle\Entity\Street $street = null)
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    /**
+     * Get street
+     *
+     * @return \AdminBundle\Entity\Street
+     */
+    public function getStreet()
+    {
+        return $this->street;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AdminBundle\Entity\User $user
+     *
+     * @return Find
+     */
+    public function setUser(\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AdminBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
