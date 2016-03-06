@@ -99,15 +99,6 @@ class Lost
     private $updatedAt;
 
 
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="Thing", inversedBy="losts")
-     * @ORM\JoinColumn(name="thing_id", referencedColumnName="id")
-     *
-     * */
-    protected $thing;
-
-
 
     /**
      *
@@ -116,6 +107,21 @@ class Lost
      *
      * */
     protected $country;
+
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Thing", inversedBy="losts")
+     * @ORM\JoinColumn(name="thing_id", referencedColumnName="id")
+     *
+     * */
+    protected $nameThing;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="losts")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $username;
 
 
 
@@ -145,14 +151,6 @@ class Lost
      * */
     protected $street;
 
-
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="losts")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *
-     * */
-    protected $user;
 
 
     /**
@@ -429,29 +427,7 @@ class Lost
         return $this->updatedAt;
     }
 
-    /**
-     * Set thing
-     *
-     * @param \AdminBundle\Entity\Thing $thing
-     *
-     * @return Lost
-     */
-    public function setThing(\AdminBundle\Entity\Thing $thing = null)
-    {
-        $this->thing = $thing;
 
-        return $this;
-    }
-
-    /**
-     * Get thing
-     *
-     * @return \AdminBundle\Entity\Thing
-     */
-    public function getThing()
-    {
-        return $this->thing;
-    }
 
     /**
      * Set country
@@ -548,28 +524,54 @@ class Lost
     {
         return $this->street;
     }
+    
+
 
     /**
-     * Set user
+     * Set username
      *
-     * @param \AdminBundle\Entity\User $user
+     * @param \AdminBundle\Entity\User $username
      *
      * @return Lost
      */
-    public function setUser(\AdminBundle\Entity\User $user = null)
+    public function setUsername(\AdminBundle\Entity\User $username = null)
     {
-        $this->user = $user;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get username
      *
      * @return \AdminBundle\Entity\User
      */
-    public function getUser()
+    public function getUsername()
     {
-        return $this->user;
+        return $this->username;
+    }
+
+    /**
+     * Set nameThing
+     *
+     * @param \AdminBundle\Entity\Thing $nameThing
+     *
+     * @return Lost
+     */
+    public function setNameThing(\AdminBundle\Entity\Thing $nameThing = null)
+    {
+        $this->nameThing = $nameThing;
+
+        return $this;
+    }
+
+    /**
+     * Get nameThing
+     *
+     * @return \AdminBundle\Entity\Thing
+     */
+    public function getNameThing()
+    {
+        return $this->nameThing;
     }
 }

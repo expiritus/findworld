@@ -25,63 +25,22 @@ class User extends BaseUser
      */
     protected $id;
 
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-        $this->losts = new ArrayCollection();
-        $this->finds = new ArrayCollection();
-    }
-
     /**
-     *
-     * @ORM\OneToMany(targetEntity="Lost", mappedBy="username")
-     *
-     *
-     * */
-    protected $losts;
-
-
-    /**
-     *
      * @ORM\OneToMany(targetEntity="Find", mappedBy="username")
-     *
-     * */
+     */
     protected $finds;
 
 
     /**
-     * Add lost
-     *
-     * @param \AdminBundle\Entity\Lost $lost
-     *
-     * @return User
+     * @ORM\OneToMany(targetEntity="Lost", mappedBy="username")
      */
-    public function addLost(\AdminBundle\Entity\Lost $lost)
-    {
-        $this->losts[] = $lost;
+    protected $losts;
 
-        return $this;
-    }
-
-    /**
-     * Remove lost
-     *
-     * @param \AdminBundle\Entity\Lost $lost
-     */
-    public function removeLost(\AdminBundle\Entity\Lost $lost)
+    public function __construct()
     {
-        $this->losts->removeElement($lost);
-    }
+        parent::__construct();
+        // your own logic
 
-    /**
-     * Get losts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getLosts()
-    {
-        return $this->losts;
     }
 
     /**
@@ -116,5 +75,39 @@ class User extends BaseUser
     public function getFinds()
     {
         return $this->finds;
+    }
+
+    /**
+     * Add lost
+     *
+     * @param \AdminBundle\Entity\Lost $lost
+     *
+     * @return User
+     */
+    public function addLost(\AdminBundle\Entity\Lost $lost)
+    {
+        $this->losts[] = $lost;
+
+        return $this;
+    }
+
+    /**
+     * Remove lost
+     *
+     * @param \AdminBundle\Entity\Lost $lost
+     */
+    public function removeLost(\AdminBundle\Entity\Lost $lost)
+    {
+        $this->losts->removeElement($lost);
+    }
+
+    /**
+     * Get losts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLosts()
+    {
+        return $this->losts;
     }
 }

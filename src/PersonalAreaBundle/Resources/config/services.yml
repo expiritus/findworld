@@ -1,0 +1,4 @@
+services:
+#    personal_area.example:
+#        class: PersonalAreaBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

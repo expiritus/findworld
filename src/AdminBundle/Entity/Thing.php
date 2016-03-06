@@ -29,18 +29,18 @@ class Thing
      */
     private $nameThing;
 
-
     /**
      *
-     * @ORM\OneToMany(targetEntity="Lost", mappedBy="name_thing")
+     * @ORM\OneToMany(targetEntity="Lost", mappedBy="nameThing")
      *
      * */
     protected $losts;
 
 
+
     /**
      *
-     * @ORM\OneToMany(targetEntity="Find", mappedBy="name_thing")
+     * @ORM\OneToMany(targetEntity="Find", mappedBy="nameThing")
      *
      * */
     protected $finds;
@@ -52,6 +52,8 @@ class Thing
     }
 
 
+
+
     /**
      * Get id
      *
@@ -61,30 +63,7 @@ class Thing
     {
         return $this->id;
     }
-
-    /**
-     * Set nameThing
-     *
-     * @param string $nameThing
-     *
-     * @return Thing
-     */
-    public function setNameThing($nameThing)
-    {
-        $this->nameThing = $nameThing;
-
-        return $this;
-    }
-
-    /**
-     * Get nameThing
-     *
-     * @return string
-     */
-    public function getNameThing()
-    {
-        return $this->nameThing;
-    }
+    
 
     /**
      * Add lost
@@ -152,5 +131,29 @@ class Thing
     public function getFinds()
     {
         return $this->finds;
+    }
+
+    /**
+     * Set nameThing
+     *
+     * @param string $nameThing
+     *
+     * @return Thing
+     */
+    public function setNameThing($nameThing)
+    {
+        $this->nameThing = $nameThing;
+
+        return $this;
+    }
+
+    /**
+     * Get nameThing
+     *
+     * @return string
+     */
+    public function getNameThing()
+    {
+        return $this->nameThing;
     }
 }
