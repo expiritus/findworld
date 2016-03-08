@@ -1,0 +1,72 @@
+{% extends 'AdminBundle:default/index.html.twig' %}
+
+{% block body %}
+    <h1>Find</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ find.id }}</td>
+            </tr>
+            <tr>
+                <th>Thing</th>
+                <td>{{ find.nameThing }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ find.description }}</td>
+            </tr>
+            <tr>
+                <th>Filename</th>
+                <td>{{ find.fileName }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ find.username }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ find.country }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ find.city }}</td>
+            </tr>
+            <tr>
+                <th>Area</th>
+                <td>{{ find.area }}</td>
+            </tr>
+            <tr>
+                <th>Street</th>
+                <td>{{ find.street }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if find.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if find.createdAt %}{{ find.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if find.updatedAt %}{{ find.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_find_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_find_edit', { 'id': find.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

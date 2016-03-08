@@ -80,6 +80,10 @@ class City
         $this->areas = new ArrayCollection();
     }
 
+    public function __toString(){
+        return $this->city ? $this->city : "";
+    }
+
 
     /**
      * Get id

@@ -1,0 +1,59 @@
+{% extends 'AdminBundle:default/index.html.twig' %}
+
+{% block body %}
+    <h1>Lost list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Thing</th>
+                <th>Description</th>
+                <th>Filename</th>
+                <th>User</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Area</th>
+                <th>Street</th>
+                <th>Status</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lost in losts %}
+            <tr>
+                <td><a href="{{ path('admin_lost_show', { 'id': lost.id }) }}">{{ lost.id }}</a></td>
+                <td>{{ lost.nameThing }}</td>
+                <td>{{ lost.description }}</td>
+                <td>{{ lost.fileName }}</td>
+                <td>{{ lost.username }}</td>
+                <td>{{ lost.country }}</td>
+                <td>{{ lost.city }}</td>
+                <td>{{ lost.area }}</td>
+                <td>{{ lost.street }}</td>
+                <td>{% if lost.status %}Yes{% else %}No{% endif %}</td>
+                <td>{% if lost.createdAt %}{{ lost.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if lost.updatedAt %}{{ lost.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_lost_show', { 'id': lost.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_lost_edit', { 'id': lost.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_lost_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

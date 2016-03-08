@@ -5,10 +5,12 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('css/admin_styles.css') }}">
     </head>
     <body>
+        {% block header %}{% endblock %}
         {% block body %}{% endblock %}
-        <script src="{{ asset('js/jquery-2.2.1.min.js') }}"></script>
+        <script src="{{ asset('jquery-1.12.1.min.js') }}"></script>
         <script src="{{ asset('js/custom_script.js') }}"></script>
     </body>
 </html>

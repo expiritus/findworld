@@ -1,0 +1,59 @@
+{% extends 'AdminBundle:default/index.html.twig' %}
+
+{% block body %}
+    <h1>Find list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NameThing</th>
+                <th>Description</th>
+                <th>Filename</th>
+                <th>UserName</th>
+                <th>Country</th>
+                <th>City</th>
+                <th>Area</th>
+                <th>Street</th>
+                <th>Status</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for find in finds %}
+            <tr>
+                <td><a href="{{ path('admin_find_show', { 'id': find.id }) }}">{{ find.id }}</a></td>
+                <td>{{ find.nameThing }}</td>
+                <td>{{ find.description }}</td>
+                <td>{{ find.fileName }}</td>
+                <td>{{ find.username }}</td>
+                <td>{{ find.country }}</td>
+                <td>{{ find.city }}</td>
+                <td>{{ find.area }}</td>
+                <td>{{ find.street }}</td>
+                <td>{% if find.status %}Yes{% else %}No{% endif %}</td>
+                <td>{% if find.createdAt %}{{ find.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if find.updatedAt %}{{ find.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_find_show', { 'id': find.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_find_edit', { 'id': find.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_find_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

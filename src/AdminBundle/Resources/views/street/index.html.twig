@@ -1,0 +1,39 @@
+{% extends 'AdminBundle:default/index.html.twig' %}
+
+{% block body %}
+    <h1>Street list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Street</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for street in streets %}
+            <tr>
+                <td><a href="{{ path('admin_street_show', { 'id': street.id }) }}">{{ street.id }}</a></td>
+                <td>{{ street.street }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_street_show', { 'id': street.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_street_edit', { 'id': street.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_street_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends "PersonalAreaBundle:layout.html.twig" %}
+
+{% block header %}
+    <a class="start_link" href="{{ url('personal_area', { 'action': 'lost' }) }}">I lost</a>
+    <a class="start_link" href="{{ url('personal_area', { 'action': 'find' }) }}">I find</a>
+    <a class="start_link" href="{{ url('home') }}">Home</a>
+{% endblock %}

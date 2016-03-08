@@ -1,3 +1,35 @@
+admin_user:
+    resource: "@AdminBundle/Controller/UserController.php"
+    type:     annotation
+
+admin_thing:
+    resource: "@AdminBundle/Controller/ThingController.php"
+    type:     annotation
+
+admin_street:
+    resource: "@AdminBundle/Controller/StreetController.php"
+    type:     annotation
+
+admin_area:
+    resource: "@AdminBundle/Controller/AreaController.php"
+    type:     annotation
+
+admin_city:
+    resource: "@AdminBundle/Controller/CityController.php"
+    type:     annotation
+
+admin_country:
+    resource: "@AdminBundle/Controller/CountryController.php"
+    type:     annotation
+
+admin_find:
+    resource: "@AdminBundle/Controller/FindController.php"
+    type:     annotation
+
+admin_lost:
+    resource: "@AdminBundle/Controller/LostController.php"
+    type:     annotation
+
 main:
     resource: "@MainBundle/Controller/"
     type:     annotation

@@ -12,7 +12,16 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('MainBundle:Default:index.html.twig');
+        $userstatus = $this->getUser();
+        if($userstatus){
+            return $this->render('MainBundle:default:index.html.twig', array(
+                'user_logged_in' => true
+            ));
+        }else{
+            return $this->render('MainBundle:default:index.html.twig', array(
+                'user_logged_in'=> false
+            ));
+        }
     }
 
 }

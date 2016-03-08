@@ -1,0 +1,32 @@
+{% extends 'AdminBundle:default/index.html.twig' %}
+
+{% block body %}
+    <h1>Thing</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ thing.id }}</td>
+            </tr>
+            <tr>
+                <th>Namething</th>
+                <td>{{ thing.nameThing }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_thing_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_thing_edit', { 'id': thing.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

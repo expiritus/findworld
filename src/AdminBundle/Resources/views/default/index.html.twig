@@ -1,0 +1,13 @@
+{% extends '::admin/admin.html.twig' %}
+
+{% block header %}
+    <a href="{{ url('admin_country_index') }}">Country</a>
+    <a href="{{ url('admin_city_index') }}">City</a>
+    <a href="{{ url('admin_area_index') }}">Area</a>
+    <a href="{{ url('admin_street_index') }}">Street</a>
+    <a href="{{ url('admin_lost_index') }}">Lost</a>
+    <a href="{{ url('admin_find_index') }}">Find</a>
+    <a href="{{ url('admin_thing_index') }}">Thing</a>
+    <a href="{{ url('admin_user_index') }}">User</a>
+    <a href="{{ url('home') }}">Home</a>
+{% endblock %}

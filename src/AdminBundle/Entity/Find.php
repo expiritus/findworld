@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="fw_find")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\FindRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Find
 {
@@ -150,6 +151,20 @@ class Find
      *
      * */
     protected $street;
+
+    public function __construct(){
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     *
+     * @ORM\PreUpdate()
+     *
+     * */
+    public function setCreatedAtValue(){
+        $this->updatedAt = new \DateTime();
+    }
 
 
     /**

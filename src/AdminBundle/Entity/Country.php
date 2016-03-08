@@ -62,6 +62,10 @@ class Country
         $this->cities = new ArrayCollection();
     }
 
+    public function __toString(){
+        return $this->country ? $this->country : " ";
+    }
+
     /**
      * Get id
      *

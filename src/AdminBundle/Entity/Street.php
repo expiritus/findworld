@@ -66,6 +66,10 @@ class Street
         $this->finds = new ArrayCollection();
     }
 
+    public function __toString(){
+        return $this->street ? $this->street : "";
+    }
+
 
     /**
      * Get id

@@ -52,6 +52,10 @@ class Thing
     }
 
 
+    public function __toString(){
+        return $this->nameThing ? $this->nameThing : "";
+    }
+
 
 
     /**

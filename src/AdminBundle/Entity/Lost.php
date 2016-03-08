@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="fw_lost")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\LostRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Lost
 {
@@ -151,6 +152,20 @@ class Lost
      * */
     protected $street;
 
+    public function __construct(){
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
+
+    /**
+     *
+     * @ORM\PreUpdate()
+     *
+     * */
+    public function setCreatedAtValue(){
+        $this->updatedAt = new \DateTime();
+    }
 
 
     /**

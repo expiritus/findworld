@@ -1,0 +1,39 @@
+{% extends 'AdminBundle:default/index.html.twig' %}
+
+{% block body %}
+    <h1>Thing list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Namething</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for thing in things %}
+            <tr>
+                <td><a href="{{ path('admin_thing_show', { 'id': thing.id }) }}">{{ thing.id }}</a></td>
+                <td>{{ thing.nameThing }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_thing_show', { 'id': thing.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_thing_edit', { 'id': thing.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_thing_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'AdminBundle:default/index.html.twig' %}
+
+{% block body %}
+    <h1>Lost</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lost.id }}</td>
+            </tr>
+            <tr>
+                <th>Thingid</th>
+                <td>{{ lost.thingId }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ lost.description }}</td>
+            </tr>
+            <tr>
+                <th>Filename</th>
+                <td>{{ lost.fileName }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ lost.userId }}</td>
+            </tr>
+            <tr>
+                <th>Countryid</th>
+                <td>{{ lost.countryId }}</td>
+            </tr>
+            <tr>
+                <th>Cityid</th>
+                <td>{{ lost.cityId }}</td>
+            </tr>
+            <tr>
+                <th>Areaid</th>
+                <td>{{ lost.areaId }}</td>
+            </tr>
+            <tr>
+                <th>Streetid</th>
+                <td>{{ lost.streetId }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if lost.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if lost.createdAt %}{{ lost.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if lost.updatedAt %}{{ lost.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_lost_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_lost_edit', { 'id': lost.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

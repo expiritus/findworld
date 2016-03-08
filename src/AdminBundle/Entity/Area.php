@@ -78,6 +78,10 @@ class Area
         $this->streets = new ArrayCollection();
     }
 
+    public function __toString(){
+        return $this->area ? $this->area : "";
+    }
+
     /**
      * Get id
      *
