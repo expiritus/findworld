@@ -32,9 +32,17 @@ class Street
     /**
      * @var int
      *
-     * @ORM\Column(name="area_id", type="integer")
+     * @ORM\Column(name="area_id", type="integer", nullable=true)
      */
     private $areaId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="city_id", type="integer")
+     */
+    private $cityId;
+
 
 
     /**
@@ -52,6 +60,15 @@ class Street
      *
      * */
     protected $finds;
+
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="streets")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     *
+     * */
+    protected $city;
 
     /**
      *
@@ -219,5 +236,53 @@ class Street
     public function getArea()
     {
         return $this->area;
+    }
+
+    /**
+     * Set cityId
+     *
+     * @param integer $cityId
+     *
+     * @return Street
+     */
+    public function setCityId($cityId)
+    {
+        $this->cityId = $cityId;
+
+        return $this;
+    }
+
+    /**
+     * Get cityId
+     *
+     * @return integer
+     */
+    public function getCityId()
+    {
+        return $this->cityId;
+    }
+
+    /**
+     * Set city
+     *
+     * @param \AdminBundle\Entity\Street $city
+     *
+     * @return Street
+     */
+    public function setCity(\AdminBundle\Entity\Street $city = null)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \AdminBundle\Entity\Street
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 }

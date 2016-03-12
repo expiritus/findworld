@@ -72,12 +72,21 @@ class City
     protected $areas;
 
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Street", mappedBy="city")
+     *
+     * */
+    protected $streets;
+
+
 
 
     public function __construct(){
         $this->losts = new ArrayCollection();
         $this->finds = new ArrayCollection();
         $this->areas = new ArrayCollection();
+        $this->streets = new ArrayCollection();
     }
 
     public function __toString(){

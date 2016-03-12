@@ -10,4 +10,11 @@ namespace AdminBundle\Repository;
  */
 class AreaRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAllByParentId($city_id){
+        return $this->getEntityManager()
+            ->createQuery("SELECT c FROM AdminBundle:Area c WHERE c.cityId = :city_id")
+            ->setParameter('city_id', $city_id)
+            ->getArrayResult();
+
+    }
 }

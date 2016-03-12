@@ -36,3 +36,10 @@ table {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+#city,
+#area,
+#button_next,
+#street{
+    display: none;
+}

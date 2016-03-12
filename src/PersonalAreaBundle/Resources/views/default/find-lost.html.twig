@@ -1,0 +1,30 @@
+{% extends "PersonalAreaBundle:default:index.html.twig" %}
+
+{% block body %}
+    <form action="#" method="post">
+        <p>
+            <select name="country" id="country">
+                <option value="0">Select country</option>
+                {% for country in countries %}
+                    <option value="{{ country.id }}">{{ country.country }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <select name="city" id="city"></select>
+        </p>
+        <p>
+            <input type="text" list="list_area" id="area" placeholder="area" autocomplete="off">
+            <datalist id="list_area"></datalist>
+        </p>
+        <p>
+            <button type="button" id="button_next">Next</button>
+        </p>
+        <p>
+            <input type="text" list="list_street" id="street" placeholder="street" autocomplete="off">
+        </p>
+        <p>
+            <input type="submit" name="submit" id="form_submit">
+        </p>
+    </form>
+{% endblock %}
