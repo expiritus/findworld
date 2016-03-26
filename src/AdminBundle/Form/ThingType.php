@@ -16,6 +16,7 @@ class ThingType extends AbstractType
     {
         $builder
             ->add('nameThing')
+            ->add('baseThing')
         ;
     }
     

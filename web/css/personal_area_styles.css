@@ -40,6 +40,10 @@ table {
 #city,
 #area,
 #button_next,
-#street{
+#button_next2,
+#street,
+#thing,
+#image_thing,
+#custom_thing {
     display: none;
 }

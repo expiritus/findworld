@@ -1,7 +1,7 @@
 {% extends "PersonalAreaBundle:default:index.html.twig" %}
 
 {% block body %}
-    <form action="#" method="post">
+    <form action="{{ url('personal_area', { 'action': action }) }}" method="post" enctype="multipart/form-data">
         <p>
             <select name="country" id="country">
                 <option value="0">Select country</option>
@@ -14,14 +14,28 @@
             <select name="city" id="city"></select>
         </p>
         <p>
-            <input type="text" list="list_area" id="area" placeholder="area" autocomplete="off">
+            <input type="text" list="list_area" name="area" id="area" placeholder="area" autocomplete="off">
             <datalist id="list_area"></datalist>
         </p>
         <p>
             <button type="button" id="button_next">Next</button>
         </p>
         <p>
-            <input type="text" list="list_street" id="street" placeholder="street" autocomplete="off">
+            <input type="text" list="list_street" id="street" name="street" placeholder="street" autocomplete="off">
+            <datalist id="list_street"></datalist>
+        </p>
+        <p>
+            <select name="thing" id="thing"></select>
+        </p>
+
+        <p>
+            <input type="text" name="custom_thing" id="custom_thing" placeholder="custom_thing">
+        </p>
+        <p>
+            <input type="file" name="image_thing" id="image_thing">
+        </p>
+        <p>
+            <button type="button" id="button_next2">Next</button>
         </p>
         <p>
             <input type="submit" name="submit" id="form_submit">

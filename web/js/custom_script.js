@@ -4,8 +4,11 @@ $(document).ready(function(){
     var area = $("#area");
     var list_area = $("#list_area");
     var button_next = $("#button_next");
+    var button_next2 = $("#button_next2");
     var street = $("#street");
     var thing = $("#thing");
+    var custom_thing = $("#custom_thing");
+    var image_thing = $("#image_thing");
 
     country.on('change', function(){
         city.empty();
@@ -14,7 +17,13 @@ $(document).ready(function(){
         if(country_id == 0){
             city.hide();
             area.hide();
+            street.hide();
             button_next.hide();
+            button_next2.hide();
+            street.hide();
+            thing.hide();
+            image_thing.hide();
+            custom_thing.hide();
         }else{
             city.show();
         }
@@ -33,13 +42,20 @@ $(document).ready(function(){
 
     city.on("change", function(){
         area.val('');
+        street.val('');
         list_area.empty();
         var city_id = city.val();
         if(city_id == 0){
             area.hide();
             button_next.hide();
+            button_next2.hide();
+            street.hide();
+            thing.hide();
+            image_thing.hide();
+            custom_thing.hide();
         }else{
             area.show();
+            button_next.show();
         }
 
         $.ajax({
@@ -56,11 +72,14 @@ $(document).ready(function(){
     });
 
     button_next.on('click', function(){
+        street.show();
+        button_next.hide();
+        button_next2.show();
         var area_name = area.val();
         var city_id = city.val();
         $.ajax({
             url: '/get_street',
-            method: 'POST',
+            method: 'get',
             data: {
                 area_name: area_name,
                 city_id: city_id
@@ -69,5 +88,12 @@ $(document).ready(function(){
                 console.info(data);
             }
         });
+    });
+
+    button_next2.on('click', function(){
+        thing.show();
+        image_thing.show();
+        custom_thing.show();
+        button_next2.hide();
     });
 });

@@ -29,6 +29,15 @@ class Thing
      */
     private $nameThing;
 
+
+    /**
+     *
+     * @ORM\Column(name="base_thing", type="boolean", nullable=true)
+     *
+     *
+     * */
+    private $baseThing;
+
     /**
      *
      * @ORM\OneToMany(targetEntity="Lost", mappedBy="nameThing")
@@ -159,5 +168,29 @@ class Thing
     public function getNameThing()
     {
         return $this->nameThing;
+    }
+
+    /**
+     * Set baseThing
+     *
+     * @param boolean $baseThing
+     *
+     * @return Thing
+     */
+    public function setBaseThing($baseThing)
+    {
+        $this->baseThing = $baseThing;
+
+        return $this;
+    }
+
+    /**
+     * Get baseThing
+     *
+     * @return boolean
+     */
+    public function getBaseThing()
+    {
+        return $this->baseThing;
     }
 }
