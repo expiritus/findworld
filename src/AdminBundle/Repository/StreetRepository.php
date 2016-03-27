@@ -10,4 +10,17 @@ namespace AdminBundle\Repository;
  */
 class StreetRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getStreetByAreaId($area_id){
+        return $this->getEntityManager()
+            ->createQuery("SELECT s FROM AdminBundle:Street s WHERE s.areaId = :area_id")
+            ->setParameter('area_id', $area_id)
+            ->getArrayResult();
+    }
+
+    public function getStreetByCityId($city_id){
+        return $this->getEntityManager()
+            ->createQuery("SELECT c FROM AdminBundle:Street c WHERE c.cityId = :city_id")
+            ->setParameter('city_id', $city_id)
+            ->getArrayResult();
+    }
 }

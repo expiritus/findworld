@@ -3,6 +3,7 @@ $(document).ready(function(){
     var city =  $("#city");
     var area = $("#area");
     var list_area = $("#list_area");
+    var list_street = $("#list_street");
     var button_next = $("#button_next");
     var button_next2 = $("#button_next2");
     var street = $("#street");
@@ -86,6 +87,9 @@ $(document).ready(function(){
             },
             success: function(data){
                 console.info(data);
+                $.each(data, function(index, value){
+                    $(list_street).append('<option value="'+value.street+'"></option>');
+                });
             }
         });
     });

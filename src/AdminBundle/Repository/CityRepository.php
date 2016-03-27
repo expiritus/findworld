@@ -11,7 +11,7 @@ namespace AdminBundle\Repository;
  */
 class CityRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getAllByParentId($country_id){
+    public function getCityByCountryId($country_id){
         return $this->getEntityManager()
             ->createQuery("SELECT c FROM AdminBundle:City c WHERE c.countryId = :country_id")
             ->setParameter('country_id', $country_id)
