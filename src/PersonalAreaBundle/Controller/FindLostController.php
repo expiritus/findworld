@@ -88,44 +88,45 @@ class FindLostController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository('AdminBundle:Street');
 
-        //есил был указан район то выводим улицы относящиеся к этому району
-        //иначе вывыодим все улицы относящиеся к id города
         if($area_name){
-
-            //проверяем есть ли название района в базе данных
-            $check_isset_area = $em->getRepository('AdminBundle:Area')->getAreaByName($area_name);
-
-            //если нет то вносим название района в базу
-            //если название районе есть в базе то выбираем все улицы с id ройона
-            if(!$check_isset_area){
-                $area = new Area();
-                $area->setArea($area_name);
-                $city = $em->getRepository('AdminBundle:City')->find($city_id);
-                $area->setCity($city);
-                $em->persist($area);
-                $em->flush();
-                $area_id = $area->getId();
-                $streets = $repository->getStreetByAreaId($area_id);
-            }else{
-                $area = $em->getRepository('AdminBundle:Area')->findOneBy(array(
-                    'area' => $area_name
-                ));
-
-                $area_id = $area->getId();
-                $streets = $repository->getStreetByAreaId($area_id);
-            }
+            $area = $em->getRepository('AdminBundle:Area')->findOneBy(array(
+                'area' => $area_name
+            ));
+            $area_id = $area->getId();
+            $streets = $repository->getStreetByAreaId($area_id);
         }else{
             $streets = $repository->getStreetByCityId($city_id);
         }
-
-
 
         $response = new Response(json_encode($streets));
         $response->headers->set('Content-Type', 'application/json; charset=utf-8');
         return $response;
     }
 
-//
+
+    /**
+     *
+     * @Route("/get_thing", name="get_thing")
+     *
+     *
+     * */
+    public function getThing(Request $request){
+        $things = $this->getDoctrine()->getRepository('AdminBundle:Thing')->getBaseThings();
+
+        $response = new Response(json_encode($things));
+        $response->headers->set('Content-Type', 'application/json; charset=utf-8');
+        return $response;
+    }
+
+
+
+    private function mb_ucfirst($string, $encoding){
+        $strlen = mb_strlen($string, $encoding);
+        $firstChar = mb_substr($string, 0, 1, $encoding);
+        $then = mb_substr($string, 1, $strlen - 1, $encoding);
+        return mb_strtoupper($firstChar, $encoding) . $then;
+    }
+
 //    private function saveData(Request $request, $action){
 //        $country = htmlspecialchars($request->request->get('country'));
 //        $city = htmlspecialchars($request->request->get('city'));
@@ -140,6 +141,42 @@ class FindLostController extends Controller
 //        $em = $this->getDoctrine()->getManager();
 //        $em->persist($find_lost_data);
 //        $em->flush();
+//
+//        //есил был указан район то выводим улицы относящиеся к этому району
+//        //иначе вывыодим все улицы относящиеся к id города
+//        if($area_name){
+//
+//            //проверяем есть ли название района в базе данных
+//            $check_isset_area = $em->getRepository('AdminBundle:Area')->getAreaByName($area_name);
+//
+//            //если нет то вносим название района в базу
+//            //если название районе есть в базе то выбираем все улицы с id ройона
+//
+//            if(!$check_isset_area){
+//                $area_name = $this->mb_ucfirst($area_name, "UTF-8");
+//                $area_name .= ' р-н';
+//
+//                $area = new Area();
+//                $area->setArea($area_name);
+//                $city = $em->getRepository('AdminBundle:City')->find($city_id);
+//                $area->setCity($city);
+//                $em->persist($area);
+//                $em->flush();
+//                $area_id = $area->getId();
+//                $streets = $repository->getStreetByAreaId($area_id);
+//            }else{
+//                $area = $em->getRepository('AdminBundle:Area')->findOneBy(array(
+//                    'area' => $area_name
+//                ));
+//
+//                $area_id = $area->getId();
+//                $streets = $repository->getStreetByAreaId($area_id);
+//            }
+//        }else{
+//            $streets = $repository->getStreetByCityId($city_id);
+//        }
+//
+//
 //    }
 
 }

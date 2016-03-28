@@ -72,10 +72,7 @@ $(document).ready(function(){
         });
     });
 
-    button_next.on('click', function(){
-        street.show();
-        button_next.hide();
-        button_next2.show();
+    function getStreet(){
         var area_name = area.val();
         var city_id = city.val();
         $.ajax({
@@ -86,18 +83,59 @@ $(document).ready(function(){
                 city_id: city_id
             },
             success: function(data){
-                console.info(data);
+                list_street.empty();
+                street.val('');
                 $.each(data, function(index, value){
                     $(list_street).append('<option value="'+value.street+'"></option>');
                 });
             }
         });
+    }
+
+    button_next.on('click', function(){
+        street.show();
+        button_next.hide();
+        button_next2.show();
+        getStreet();
+    });
+
+    area.on('change', function(){
+        getStreet();
     });
 
     button_next2.on('click', function(){
-        thing.show();
+        thing.show().empty().append('<option value="0">choice thing</option>');
+        custom_thing.val("");
         image_thing.show();
         custom_thing.show();
         button_next2.hide();
+        $.ajax({
+            url: '/get_thing',
+            method: 'get',
+            success: function(data){
+                $.each(data, function(index, value){
+                    $(thing).append('<option value="'+value.id+'">'+value.nameThing+'</option>');
+                });
+            }
+        });
+    });
+
+    thing.on('change', function(){
+        var value_thing = thing.val();
+        custom_thing.val('');
+        if(value_thing == 0){
+            custom_thing.show();
+        }else{
+            custom_thing.hide();
+        }
+    });
+
+    custom_thing.on('keyup', function(){
+        var custom_thing_value = custom_thing.val();
+        if(custom_thing_value.length > 0){
+            thing.hide();
+        }else{
+            thing.show();
+        }
     });
 });

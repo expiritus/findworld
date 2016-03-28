@@ -10,4 +10,9 @@ namespace AdminBundle\Repository;
  */
 class ThingRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getBaseThings(){
+        return $this->getEntityManager()
+            ->createQuery('SELECT t FROM AdminBundle:Thing t WHERE t.baseThing = 1')
+            ->getArrayResult();
+    }
 }
