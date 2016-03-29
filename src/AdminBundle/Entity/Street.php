@@ -265,11 +265,11 @@ class Street
     /**
      * Set city
      *
-     * @param \AdminBundle\Entity\Street $city
+     * @param \AdminBundle\Entity\City $city
      *
      * @return Street
      */
-    public function setCity(\AdminBundle\Entity\Street $city = null)
+    public function setCity(\AdminBundle\Entity\City $city = null)
     {
         $this->city = $city;
 

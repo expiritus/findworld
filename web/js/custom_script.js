@@ -4,6 +4,7 @@ $(document).ready(function(){
     var area = $("#area");
     var list_area = $("#list_area");
     var list_street = $("#list_street");
+    var list_thing = $("#list_thing");
     var button_next = $("#button_next");
     var button_next2 = $("#button_next2");
     var street = $("#street");
@@ -15,9 +16,9 @@ $(document).ready(function(){
         city.empty();
         list_area.empty();
         var country_id = $("#country").val();
-        if(country_id == 0){
+        //if(country_id == 0){
             city.hide();
-            area.hide();
+            //area.hide();
             street.hide();
             button_next.hide();
             button_next2.hide();
@@ -25,9 +26,9 @@ $(document).ready(function(){
             thing.hide();
             image_thing.hide();
             custom_thing.hide();
-        }else{
+        //}else{
             city.show();
-        }
+        //}
         $.ajax({
             url: '/get_city/'+country_id,
             method: 'get',
@@ -114,7 +115,8 @@ $(document).ready(function(){
             method: 'get',
             success: function(data){
                 $.each(data, function(index, value){
-                    $(thing).append('<option value="'+value.id+'">'+value.nameThing+'</option>');
+                    thing.append('<option value="'+value.id+'">'+value.nameThing+'</option>');
+                    list_thing.append('<option value="'+value.nameThing+'"></option>');
                 });
             }
         });
@@ -124,18 +126,18 @@ $(document).ready(function(){
         var value_thing = thing.val();
         custom_thing.val('');
         if(value_thing == 0){
-            custom_thing.show();
+            custom_thing.removeAttr('disabled');
         }else{
-            custom_thing.hide();
+            custom_thing.attr('disabled', 'disabled');
         }
     });
 
     custom_thing.on('keyup', function(){
-        var custom_thing_value = custom_thing.val();
+        var custom_thing_value = $(custom_thing).val();
         if(custom_thing_value.length > 0){
-            thing.hide();
+            thing.prop('disabled', true);
         }else{
-            thing.show();
+            thing.prop('disabled', false);
         }
     });
 });

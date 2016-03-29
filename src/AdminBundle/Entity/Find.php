@@ -25,7 +25,7 @@ class Find
     /**
      * @var int
      *
-     * @ORM\Column(name="thing_id", type="integer")
+     * @ORM\Column(name="thing_id", type="integer", nullable=true)
      */
     private $thingId;
 
@@ -46,7 +46,7 @@ class Find
     /**
      * @var int
      *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\Column(name="user_id", type="integer", nullable=true)
      */
     private $userId;
 
@@ -81,7 +81,7 @@ class Find
     /**
      * @var bool
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     private $status;
 
