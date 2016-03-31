@@ -23,4 +23,13 @@ class StreetRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('city_id', $city_id)
             ->getArrayResult();
     }
+
+    public function getStreetByParent($parent_id){
+        return $this->getEntityManager()
+            ->createQuery("SELECT s FROM AdminBundle:Street s WHERE s.cityId = :city_id OR s.areaId = :area_id")
+            ->setParameter('city_id', $parent_id['cityId'])
+            ->setParameter('area_id', $parent_id['areaId'])
+            ->getResult();
+
+    }
 }

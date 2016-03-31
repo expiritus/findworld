@@ -25,9 +25,9 @@ class Thing
     /**
      * @var string
      *
-     * @ORM\Column(name="name_thing", type="string", length=255)
+     * @ORM\Column(name="thing", type="string", length=255)
      */
-    private $nameThing;
+    private $thing;
 
 
     /**
@@ -40,7 +40,7 @@ class Thing
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="Lost", mappedBy="nameThing")
+     * @ORM\OneToMany(targetEntity="Lost", mappedBy="thing")
      *
      * */
     protected $losts;
@@ -49,7 +49,7 @@ class Thing
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="Find", mappedBy="nameThing")
+     * @ORM\OneToMany(targetEntity="Find", mappedBy="thing")
      *
      * */
     protected $finds;
@@ -62,7 +62,7 @@ class Thing
 
 
     public function __toString(){
-        return $this->nameThing ? $this->nameThing : "";
+        return $this->thing ? $this->thing : "";
     }
 
 
@@ -147,27 +147,27 @@ class Thing
     }
 
     /**
-     * Set nameThing
+     * Set thing
      *
-     * @param string $nameThing
+     * @param string $thing
      *
      * @return Thing
      */
-    public function setNameThing($nameThing)
+    public function setThing($thing)
     {
-        $this->nameThing = $nameThing;
+        $this->thing = $thing;
 
         return $this;
     }
 
     /**
-     * Get nameThing
+     * Get thing
      *
      * @return string
      */
-    public function getNameThing()
+    public function getThing()
     {
-        return $this->nameThing;
+        return $this->thing;
     }
 
     /**

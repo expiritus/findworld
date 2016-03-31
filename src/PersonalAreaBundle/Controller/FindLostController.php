@@ -69,53 +69,67 @@ class FindLostController extends Controller
 
         if($area_name){
             //проверяем есть ли название района в базе данных
-            $check_isset_area = $em->getRepository('AdminBundle:Area')->findOneBy(array(
-                'area' => $area_name,
-                'cityId' => $city_id
-            ));
-
-            if(!$check_isset_area){
-                $area_name = $this->mb_ucfirst($area_name, "UTF-8");
-                $area_name .= ' р-н';
-
-                $area = new Area();
-                $area->setArea($area_name);
-                $area->setCity($city);
-                $em->persist($area);
-                $em->flush();
-                $find_lost_obj->setArea($area);
-            }else{
-                $find_lost_obj->setArea($check_isset_area);
-            }
+            $entity_name = 'Area';
+            $parent_id = array('cityId' =>'cityId');
+            $parent_associated_obj = array('city' => $city);
+            $area = $this->checkData($area_name, $parent_id, $parent_associated_obj, $em, $entity_name);
+            $find_lost_obj->setArea($area);
+            $area_id = $area->getId();
         }
 
-        $check_isset_street = $em->getRepository('AdminBundle:Street')->findOneBy(array(
-            'street' => $street_name,
-            'cityId' => $city_id
-        ));
-
-        if(!$check_isset_street){
-            $street_name = $this->mb_ucfirst($street_name, 'UTF-8');
-            $street_name .= ' ул.';
-
-            $street = new Street();
-            $street->setStreet($street_name);
-            $street->setCity($city);
-            if($check_isset_area){
-                $street->setArea($check_isset_area);
-            }else{
-                $street->setArea($area);
-            }
-
-            $em->persist($street);
-            $em->flush();
+        if($street_name){
+            $entity_name = 'Street';
+            $parent_id = array('cityId' =>'cityId', 'areaId' => 'areaId');
+            $parent_associated_obj = array('city' => $city, 'area' => $area);
+            $street = $this->checkData($street_name, $parent_id, $parent_associated_obj, $em, $entity_name);
             $find_lost_obj->setStreet($street);
-        }else{
-            $find_lost_obj->setStreet($check_isset_street);
+            $street_id = $street->getId();
         }
 
         $em->persist($find_lost_obj);
         $em->flush();
+    }
+
+    private function checkData($data_name, array $parent_id = null, array $parent_associated_obj = null, $em, $entity_name){
+        $repository = 'AdminBundle:'.$entity_name;
+        $column = strtolower($entity_name);
+        if(count(array_count_values($parent_id)) == 1){
+            $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
+                $column => $data_name,
+                $parent_id['cityId'] => $parent_id
+            ));
+        }elseif(count(array_count_values($parent_id)) == 2) {
+            $check_isset_obj = $em->getRepository($repository)->getStreetByParent($parent_id);
+        }else{
+            $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
+                $column => $data_name
+            ));
+        }
+
+        if(!$check_isset_obj){
+//            $data_name = $this->mb_ucfirst($data_name, "UTF-8");
+//            $data_name .= ' р-н';
+
+            $entity_obj = '\AdminBundle\Entity\\'.$entity_name;
+            $entity = new $entity_obj;
+            switch ($entity_name){
+                case 'Area':
+                    $entity->setArea($data_name);
+                    $entity->setCity($parent_associated_obj['city']);
+                    break;
+                case 'Street':
+                    $entity->setStreet($data_name);
+                    $entity->setCity($parent_associated_obj['city']);
+                    $entity->setArea($parent_associated_obj['area']);
+                    break;
+            }
+
+            $em->persist($entity);
+            $em->flush();
+            return $entity;
+        }else{
+            return $check_isset_obj;
+        }
     }
 
 

@@ -277,4 +277,38 @@ class City
     {
         return $this->areas;
     }
+
+    /**
+     * Add street
+     *
+     * @param \AdminBundle\Entity\Street $street
+     *
+     * @return City
+     */
+    public function addStreet(\AdminBundle\Entity\Street $street)
+    {
+        $this->streets[] = $street;
+
+        return $this;
+    }
+
+    /**
+     * Remove street
+     *
+     * @param \AdminBundle\Entity\Street $street
+     */
+    public function removeStreet(\AdminBundle\Entity\Street $street)
+    {
+        $this->streets->removeElement($street);
+    }
+
+    /**
+     * Get streets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStreets()
+    {
+        return $this->streets;
+    }
 }

@@ -116,7 +116,7 @@ class Find
      * @ORM\JoinColumn(name="thing_id", referencedColumnName="id")
      *
      * */
-    protected $nameThing;
+    protected $thing;
 
 
     /**
@@ -566,26 +566,26 @@ class Find
     }
 
     /**
-     * Set nameThing
+     * Set thing
      *
-     * @param \AdminBundle\Entity\Thing $nameThing
+     * @param \AdminBundle\Entity\Thing $thing
      *
      * @return Find
      */
-    public function setNameThing(\AdminBundle\Entity\Thing $nameThing = null)
+    public function setThing(\AdminBundle\Entity\Thing $thing = null)
     {
-        $this->nameThing = $nameThing;
+        $this->thing = $thing;
 
         return $this;
     }
 
     /**
-     * Get nameThing
+     * Get thing
      *
      * @return \AdminBundle\Entity\Thing
      */
-    public function getNameThing()
+    public function getThing()
     {
-        return $this->nameThing;
+        return $this->thing;
     }
 }

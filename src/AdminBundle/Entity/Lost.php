@@ -116,7 +116,7 @@ class Lost
      * @ORM\JoinColumn(name="thing_id", referencedColumnName="id")
      *
      * */
-    protected $nameThing;
+    protected $thing;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="losts")
@@ -567,26 +567,50 @@ class Lost
     }
 
     /**
-     * Set nameThing
+     * Set thing
      *
-     * @param \AdminBundle\Entity\Thing $nameThing
+     * @param \AdminBundle\Entity\Thing $thing
      *
      * @return Lost
      */
-    public function setNameThing(\AdminBundle\Entity\Thing $nameThing = null)
+    public function setThing(\AdminBundle\Entity\Thing $thing = null)
     {
-        $this->nameThing = $nameThing;
+        $this->thing = $thing;
 
         return $this;
     }
 
     /**
-     * Get nameThing
+     * Get thing
      *
      * @return \AdminBundle\Entity\Thing
      */
-    public function getNameThing()
+    public function getThing()
     {
-        return $this->nameThing;
+        return $this->thing;
+    }
+
+    /**
+     * Set hing
+     *
+     * @param \AdminBundle\Entity\Thing $hing
+     *
+     * @return Lost
+     */
+    public function setHing(\AdminBundle\Entity\Thing $hing = null)
+    {
+        $this->hing = $hing;
+
+        return $this;
+    }
+
+    /**
+     * Get hing
+     *
+     * @return \AdminBundle\Entity\Thing
+     */
+    public function getHing()
+    {
+        return $this->thing;
     }
 }
