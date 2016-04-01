@@ -15,7 +15,7 @@ class ThingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nameThing')
+            ->add('thing')
             ->add('baseThing')
         ;
     }

@@ -11,14 +11,13 @@ $(document).ready(function(){
     var thing = $("#thing");
     var custom_thing = $("#custom_thing");
     var image_thing = $("#image_thing");
+    var description = $("#description");
 
     country.on('change', function(){
         city.empty();
         list_area.empty();
         var country_id = $("#country").val();
-        //if(country_id == 0){
             city.hide();
-            //area.hide();
             street.hide();
             button_next.hide();
             button_next2.hide();
@@ -26,9 +25,8 @@ $(document).ready(function(){
             thing.hide();
             image_thing.hide();
             custom_thing.hide();
-        //}else{
+            description.hide();
             city.show();
-        //}
         $.ajax({
             url: '/get_city/'+country_id,
             method: 'get',
@@ -55,6 +53,7 @@ $(document).ready(function(){
             thing.hide();
             image_thing.hide();
             custom_thing.hide();
+            description.hide();
         }else{
             area.show();
             button_next.show();
@@ -109,14 +108,15 @@ $(document).ready(function(){
         custom_thing.val("");
         image_thing.show();
         custom_thing.show();
+        description.show();
         button_next2.hide();
         $.ajax({
             url: '/get_thing',
             method: 'get',
             success: function(data){
                 $.each(data, function(index, value){
-                    thing.append('<option value="'+value.id+'">'+value.nameThing+'</option>');
-                    list_thing.append('<option value="'+value.nameThing+'"></option>');
+                    thing.append('<option value="'+value.id+'">'+value.thing+'</option>');
+                    list_thing.append('<option value="'+value.thing+'"></option>');
                 });
             }
         });

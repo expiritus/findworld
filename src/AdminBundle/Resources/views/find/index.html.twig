@@ -25,7 +25,7 @@
         {% for find in finds %}
             <tr>
                 <td><a href="{{ path('admin_find_show', { 'id': find.id }) }}">{{ find.id }}</a></td>
-                <td>{{ find.nameThing }}</td>
+                <td>{{ find.thing }}</td>
                 <td>{{ find.description }}</td>
                 <td>{{ find.fileName }}</td>
                 <td>{{ find.username }}</td>

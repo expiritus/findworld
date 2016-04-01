@@ -15,7 +15,7 @@
         {% for thing in things %}
             <tr>
                 <td><a href="{{ path('admin_thing_show', { 'id': thing.id }) }}">{{ thing.id }}</a></td>
-                <td>{{ thing.nameThing }}</td>
+                <td>{{ thing.thing }}</td>
                 <td>
                     <ul>
                         <li>

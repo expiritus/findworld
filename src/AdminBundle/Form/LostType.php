@@ -16,7 +16,7 @@ class LostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nameThing')
+            ->add('thing')
             ->add('description')
             ->add('fileName', FileType::class, array(
                 'data_class' => null,

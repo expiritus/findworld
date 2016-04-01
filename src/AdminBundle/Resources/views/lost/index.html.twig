@@ -25,7 +25,7 @@
         {% for lost in losts %}
             <tr>
                 <td><a href="{{ path('admin_lost_show', { 'id': lost.id }) }}">{{ lost.id }}</a></td>
-                <td>{{ lost.nameThing }}</td>
+                <td>{{ lost.thing }}</td>
                 <td>{{ lost.description }}</td>
                 <td>{{ lost.fileName }}</td>
                 <td>{{ lost.username }}</td>
