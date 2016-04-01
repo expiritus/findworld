@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ecf618d-c3cf-418e-bac3-d316bb9db976" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Area.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Area.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/City.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/City.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Country.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Country.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Find.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Find.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PersonalAreaBundle/Controller/FindLostController.php" afterPath="$PROJECT_DIR$/src/PersonalAreaBundle/Controller/FindLostController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Form/FindType.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Form/FindType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Lost.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Lost.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Form/LostType.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Form/LostType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Street.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Street.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Repository/StreetRepository.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Repository/StreetRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Thing.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Thing.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Form/ThingType.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Form/ThingType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/custom_script.js" afterPath="$PROJECT_DIR$/web/js/custom_script.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PersonalAreaBundle/Resources/views/default/find-lost.html.twig" afterPath="$PROJECT_DIR$/src/PersonalAreaBundle/Resources/views/default/find-lost.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/find/index.html.twig" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/find/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/lost/index.html.twig" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/lost/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/thing/index.html.twig" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/thing/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/personal_area_styles.css" afterPath="$PROJECT_DIR$/web/css/personal_area_styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/find/show.html.twig" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/find/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/thing/show.html.twig" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/thing/show.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="findworld.iws" />
@@ -45,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FindLostController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FindLostController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PersonalAreaBundle/Controller/FindLostController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.0">
-              <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.33045357">
+              <caret line="111" column="32" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
               <folding>
                 <element signature="e#131#159#0#PHP" expanded="true" />
               </folding>
@@ -77,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="find-lost.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="find-lost.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PersonalAreaBundle/Resources/views/default/find-lost.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.551495">
-              <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+            <state vertical-scroll-proportion="-16.296297">
+              <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -150,10 +131,10 @@
         <option value="$PROJECT_DIR$/src/AdminBundle/Form/LostType.php" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Form/ThingType.php" />
         <option value="$PROJECT_DIR$/var/cache/dev/twig/ad/adb6a376d40e969f07c7d0a96a804b890122a2ea53b17be84da5a6c7c742b78a.php" />
-        <option value="$PROJECT_DIR$/src/PersonalAreaBundle/Controller/FindLostController.php" />
         <option value="$PROJECT_DIR$/web/css/personal_area_styles.css" />
         <option value="$PROJECT_DIR$/web/js/custom_script.js" />
         <option value="$PROJECT_DIR$/src/PersonalAreaBundle/Resources/views/default/find-lost.html.twig" />
+        <option value="$PROJECT_DIR$/src/PersonalAreaBundle/Controller/FindLostController.php" />
       </list>
     </option>
   </component>
@@ -680,16 +661,23 @@
       <option name="project" value="LOCAL" />
       <updated>1459460808480</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="lost form">
+      <created>1459542285623</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1459542285623</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32960325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -702,7 +690,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1108,16 +1095,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PersonalAreaBundle/Controller/FindLostController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.0">
-          <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
-          <folding>
-            <element signature="e#131#159#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/personal_area_styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1136,9 +1113,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PersonalAreaBundle/Resources/views/default/find-lost.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.551495">
-          <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+        <state vertical-scroll-proportion="-16.296297">
+          <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PersonalAreaBundle/Controller/FindLostController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33045357">
+          <caret line="111" column="32" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
+          <folding>
+            <element signature="e#131#159#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

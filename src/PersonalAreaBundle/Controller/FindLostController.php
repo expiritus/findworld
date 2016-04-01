@@ -112,21 +112,15 @@ class FindLostController extends Controller
         }elseif(count($parent_id) == 2) {
             $check_isset_obj = $em->getRepository($repository)->getStreetByParent($data_name, $parent_id);
         }elseif($parent_id == null){
-            if($data_name){
-                $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
-                    'id' => $data_name
-                ));
-            }else{
-                $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
-                    $column => $data_name
-                ));
-            }
-
+            $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
+                $column => $data_name
+            ));
         }else{
             $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
                 $column => $data_name
             ));
         }
+
 
         if(!$check_isset_obj){
             $entity_obj = '\AdminBundle\Entity\\'.$entity_name;
