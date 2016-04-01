@@ -54,6 +54,7 @@ class FindLostController extends Controller
         $area_name = htmlspecialchars($request->request->get('area'));
         $street_name = htmlspecialchars($request->request->get('street'));
         $thing = htmlspecialchars($request->request->get('thing'));
+        $description = htmlspecialchars($request->request->get('description'));
         if(empty($thing)){
             $thing = htmlspecialchars($request->request->get('custom_thing'));
         }
@@ -93,9 +94,9 @@ class FindLostController extends Controller
             $find_lost_obj->setThing($thing);
         }
 
-
         $user = $this->getUser();
         $find_lost_obj->setUserName($user);
+        $find_lost_obj->setDescription($description);
 
         $em->persist($find_lost_obj);
         $em->flush();
