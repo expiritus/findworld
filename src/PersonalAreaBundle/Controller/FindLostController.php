@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\TemplateNameParser;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FindLostController extends Controller
 {
@@ -55,6 +56,8 @@ class FindLostController extends Controller
         $street_name = htmlspecialchars($request->request->get('street'));
         $thing = htmlspecialchars($request->request->get('thing'));
         $description = htmlspecialchars($request->request->get('description'));
+        $image_thing = $request->files->get("image_thing");
+
         if(empty($thing)){
             $thing = htmlspecialchars($request->request->get('custom_thing'));
         }
@@ -82,8 +85,18 @@ class FindLostController extends Controller
 
         if($street_name){
             $entity_name = 'Street';
-            $parent_id = array('cityId' => $city_id, 'areaId' => $area_id);
-            $parent_associated_obj = array('city' => $city, 'area' => $area);
+            if(isset($area_id)){
+                $parent_id = array('cityId' => $city_id, 'areaId' => $area_id);
+            }else{
+                $parent_id = array('cityId' => $city_id);
+            }
+
+            if(isset($area)){
+                $parent_associated_obj = array('city' => $city, 'area' => $area);
+            }else{
+                $parent_associated_obj = array('city' => $city);
+            }
+
             $street = $this->checkData($street_name, $parent_id, $parent_associated_obj, $em, $entity_name);
             $find_lost_obj->setStreet($street);
         }
@@ -94,9 +107,20 @@ class FindLostController extends Controller
             $find_lost_obj->setThing($thing);
         }
 
+        if(!empty($image_thing)){
+            $extension = $image_thing->guessExtension();
+            $file_name = uniqid();
+            $file_name = $file_name.'.'.$extension;
+            $dir = $this->get('kernel')->getRootDir().'/../web/files';
+            $image_thing->move($dir, $file_name);
+            $find_lost_obj->setFileName($file_name);
+        }
+
         $user = $this->getUser();
         $find_lost_obj->setUserName($user);
         $find_lost_obj->setDescription($description);
+        $find_lost_obj->setStatus(0);
+
 
         $em->persist($find_lost_obj);
         $em->flush();
@@ -129,14 +153,61 @@ class FindLostController extends Controller
             switch ($entity_name){
                 case 'Area':
                     $data_name = trim($this->mb_ucfirst($data_name, "UTF-8"));
-                    $data_name .= ' р-н';
+                    $clear_data_name = mb_stristr($data_name, ' ', true);
+                    if(!$clear_data_name){
+                        $data_name .= ' р-н';
+                    }else{
+                        $data_name = $clear_data_name.' р-н';
+                    }
+
                     $entity->setArea($data_name);
                     $entity->setCity($parent_associated_obj['city']);
                     break;
                 case 'Street':
+                    $data_name = trim($this->mb_ucfirst($data_name, "UTF-8"));
+                    $clear_data_name_start = mb_strtolower(stristr($data_name, ' ', true));
+                    $clear_data_name_end = mb_strtolower(stristr($data_name, ' '));
+
+                    if(!$clear_data_name_end){
+                        $data_name .= ' ул.';
+                    }else{
+                        $clear_data_name_end = mb_substr($clear_data_name_end, 1);
+                        $street_pattern = '/^ул?/';
+                        $avenue_pattern = '/^пр?/';
+                        if(preg_match($street_pattern, $clear_data_name_start)){
+                            $data_name = mb_stristr($data_name, ' ');
+                            $data_name = $data_name.' ул.';
+                        }
+
+                        if(preg_match($street_pattern, $clear_data_name_end)){
+                            $data_name = mb_stristr($data_name, ' ', true);
+                            $data_name = $data_name.' ул.';
+                        }
+
+                        if(preg_match($avenue_pattern, $clear_data_name_start)){
+                            $data_name = mb_stristr($data_name, ' ');
+                            $data_name = $data_name.' пр.';
+                        }
+
+                        if(preg_match($avenue_pattern, $clear_data_name_end)){
+                            $data_name = mb_stristr($data_name, ' ', true);
+                            $data_name = $data_name.' пр.';
+                        }
+
+
+                    }
+
+                    $data_name = $this->mb_ucfirst(trim($data_name), 'UTF-8');
+
+
+//                    $data_name_first_letter = mb_strtoupper(mb_substr($data_name, 0, 1));
+//                    $data_name_remaining_letter = mb_substr($data_name, 1);
+//                    $data_name = $data_name_first_letter.$data_name_remaining_letter;
                     $entity->setStreet($data_name);
                     $entity->setCity($parent_associated_obj['city']);
-                    $entity->setArea($parent_associated_obj['area']);
+                    if(isset($parent_associated_obj['area'])){
+                        $entity->setArea($parent_associated_obj['area']);
+                    }
                     break;
                 case 'Thing':
                     $entity->setThing($data_name);
