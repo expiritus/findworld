@@ -60,6 +60,8 @@ class FindLostController extends Controller
 
         if(empty($thing)){
             $thing = htmlspecialchars($request->request->get('custom_thing'));
+        }else{
+            $thing = (int)$thing;
         }
 
 
@@ -77,7 +79,7 @@ class FindLostController extends Controller
         if($area_name){
             $entity_name = 'Area';
             $parent_id = array('cityId' => $city_id);
-            $parent_associated_obj = array('city' => $city);
+            $parent_associated_obj = array('city' => $city, 'country' =>$country);
             $area = $this->checkData($area_name, $parent_id, $parent_associated_obj, $em, $entity_name);
             $find_lost_obj->setArea($area);
             $area_id = $area->getId();
@@ -136,11 +138,11 @@ class FindLostController extends Controller
             ));
         }elseif(count($parent_id) == 2) {
             $check_isset_obj = $em->getRepository($repository)->getStreetByParent($data_name, $parent_id);
-        }elseif($parent_id == null){
-            $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
-                $column => $data_name
-            ));
         }else{
+            if(is_integer($data_name)){
+                $data_name = $em->getRepository($repository)->find($data_name);
+                $data_name = $data_name->getThing();
+            }
             $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
                 $column => $data_name
             ));
@@ -153,15 +155,43 @@ class FindLostController extends Controller
             switch ($entity_name){
                 case 'Area':
                     $data_name = trim($this->mb_ucfirst($data_name, "UTF-8"));
-                    $clear_data_name = mb_stristr($data_name, ' ', true);
-                    if(!$clear_data_name){
-                        $data_name .= ' р-н';
+
+                    $clear_data_name_start = mb_strtolower(stristr($data_name, ' ', true));
+                    $clear_data_name_end = mb_strtolower(stristr($data_name, ' '));
+
+                    if(!$clear_data_name_end){
+                        $data_name .= ' р-н.';
                     }else{
-                        $data_name = $clear_data_name.' р-н';
+                        $clear_data_name_end = mb_substr($clear_data_name_end, 1);
+                        $area_pattern = '/^р-н?/';
+                        $region_pattern = '/^обл?/';
+                        if(preg_match($area_pattern, $clear_data_name_start)){
+                            $data_name = mb_stristr($data_name, ' ');
+                            $data_name = $data_name.' р-н.';
+                        }
+
+                        if(preg_match($area_pattern, $clear_data_name_end)){
+                            $data_name = mb_stristr($data_name, ' ', true);
+                            $data_name = $data_name.' р-н.';
+                        }
+
+                        if(preg_match($region_pattern, $clear_data_name_start)){
+                            $data_name = mb_stristr($data_name, ' ');
+                            $data_name = $data_name.' обл.';
+                        }
+
+                        if(preg_match($region_pattern, $clear_data_name_end)){
+                            $data_name = mb_stristr($data_name, ' ', true);
+                            $data_name = $data_name.' обл.';
+                        }
                     }
 
+                    $data_name = $this->mb_ucfirst(trim($data_name), 'UTF-8');
                     $entity->setArea($data_name);
-                    $entity->setCity($parent_associated_obj['city']);
+                    $entity->setCountry($parent_associated_obj['country']);
+                    if(isset($parent_associated_obj['city'])){
+                        $entity->setCity($parent_associated_obj['city']);
+                    }
                     break;
                 case 'Street':
                     $data_name = trim($this->mb_ucfirst($data_name, "UTF-8"));
@@ -193,16 +223,9 @@ class FindLostController extends Controller
                             $data_name = mb_stristr($data_name, ' ', true);
                             $data_name = $data_name.' пр.';
                         }
-
-
                     }
 
                     $data_name = $this->mb_ucfirst(trim($data_name), 'UTF-8');
-
-
-//                    $data_name_first_letter = mb_strtoupper(mb_substr($data_name, 0, 1));
-//                    $data_name_remaining_letter = mb_substr($data_name, 1);
-//                    $data_name = $data_name_first_letter.$data_name_remaining_letter;
                     $entity->setStreet($data_name);
                     $entity->setCity($parent_associated_obj['city']);
                     if(isset($parent_associated_obj['area'])){

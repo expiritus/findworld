@@ -56,10 +56,20 @@ class Country
     protected $cities;
 
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Area", mappedBy="country")
+     *
+     *
+     * */
+    protected $areas;
+
+
     public function __construct(){
         $this->losts = new ArrayCollection();
         $this->finds = new ArrayCollection();
         $this->cities = new ArrayCollection();
+        $this->areas = new ArrayCollection();
     }
 
     public function __toString(){
@@ -200,5 +210,39 @@ class Country
     public function getCities()
     {
         return $this->cities;
+    }
+
+    /**
+     * Add area
+     *
+     * @param \AdminBundle\Entity\Area $area
+     *
+     * @return Country
+     */
+    public function addArea(\AdminBundle\Entity\Area $area)
+    {
+        $this->areas[] = $area;
+
+        return $this;
+    }
+
+    /**
+     * Remove area
+     *
+     * @param \AdminBundle\Entity\Area $area
+     */
+    public function removeArea(\AdminBundle\Entity\Area $area)
+    {
+        $this->areas->removeElement($area);
+    }
+
+    /**
+     * Get areas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAreas()
+    {
+        return $this->areas;
     }
 }

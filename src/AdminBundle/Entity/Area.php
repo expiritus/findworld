@@ -29,10 +29,20 @@ class Area
      */
     private $area;
 
+
+    /**
+     *
+     * @var int
+     *
+     * @ORM\Column(name="country_id", type="integer")
+     *
+     * */
+    private $countryId;
+
     /**
      * @var int
      *
-     * @ORM\Column(name="city_id", type="integer")
+     * @ORM\Column(name="city_id", type="integer", nullable=true)
      */
     private $cityId;
 
@@ -55,6 +65,15 @@ class Area
     protected $finds;
 
 
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="areas")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     *
+     * */
+    protected $country;
+
     /**
      *
      * @ORM\ManyToOne(targetEntity="City", inversedBy="areas")
@@ -62,6 +81,7 @@ class Area
      *
      * */
     protected $city;
+
 
 
     /**
@@ -264,5 +284,53 @@ class Area
     public function getStreets()
     {
         return $this->streets;
+    }
+
+    /**
+     * Set countryId
+     *
+     * @param integer $countryId
+     *
+     * @return Area
+     */
+    public function setCountryId($countryId)
+    {
+        $this->countryId = $countryId;
+
+        return $this;
+    }
+
+    /**
+     * Get countryId
+     *
+     * @return integer
+     */
+    public function getCountryId()
+    {
+        return $this->countryId;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \AdminBundle\Entity\Country $country
+     *
+     * @return Area
+     */
+    public function setCountry(\AdminBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \AdminBundle\Entity\Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 }
