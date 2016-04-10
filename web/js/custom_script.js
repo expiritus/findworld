@@ -115,8 +115,11 @@ $(document).ready(function(){
             method: 'get',
             success: function(data){
                 $.each(data, function(index, value){
-                    thing.append('<option value="'+value.id+'">'+value.thing+'</option>');
+                    if(value.baseThing == true){
+                        thing.append('<option value="'+value.id+'">'+value.thing+'</option>');
+                    }
                     list_thing.append('<option value="'+value.thing+'"></option>');
+
                 });
             }
         });

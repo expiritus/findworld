@@ -4,4 +4,33 @@
     <a class="start_link" href="{{ url('personal_area', { 'action': 'lost' }) }}">I lost</a>
     <a class="start_link" href="{{ url('personal_area', { 'action': 'find' }) }}">I find</a>
     <a class="start_link" href="{{ url('home') }}">Home</a>
+    <a class="start_link" href="{{ url('fos_user_security_logout') }}">Logout</a>
+{% endblock %}
+{% block body %}
+    {% if lost_things %}
+        <h1>Я потерял</h1>
+        {% for lost_thing in lost_things %}
+            <img width="170" src="{{ asset('files/') }}{{ lost_thing.fileName }}" alt="">
+            {{ lost_thing.country }}
+            {{ lost_thing.thing }}
+            {{ lost_thing.city }}
+            {{ lost_thing.area }}
+            {{ lost_thing.street }}
+            {{ lost_thing.description }}
+            {{ lost_thing.createdAt|date }}
+        {% endfor %}
+    {% endif %}
+    {% if find_things %}
+        <h1>Я нашел</h1>
+        {% for find_thing in find_things %}
+            <img width="170" src="{{ asset('files/') }}{{ find_thing.fileName }}" alt="">
+            {{ find_thing.country }}
+            {{ find_thing.thing }}
+            {{ find_thing.city }}
+            {{ find_thing.area }}
+            {{ find_thing.street }}
+            {{ find_thing.description }}
+            {{ find_thing.createdAt|date }}
+        {% endfor %}
+    {% endif %}
 {% endblock %}

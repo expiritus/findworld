@@ -23,6 +23,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class FindLostController extends Controller
 {
 
+
+
     /**
      *
      * @Route("/personal_area/{action}", name="personal_area")
@@ -111,7 +113,8 @@ class FindLostController extends Controller
 
         if(!empty($image_thing)){
             $extension = $image_thing->guessExtension();
-            $file_name = uniqid();
+
+            $file_name = time();
             $file_name = $file_name.'.'.$extension;
             $dir = $this->get('kernel')->getRootDir().'/../web/files';
             $image_thing->move($dir, $file_name);
@@ -122,7 +125,6 @@ class FindLostController extends Controller
         $find_lost_obj->setUserName($user);
         $find_lost_obj->setDescription($description);
         $find_lost_obj->setStatus(0);
-
 
         $em->persist($find_lost_obj);
         $em->flush();
@@ -154,25 +156,26 @@ class FindLostController extends Controller
             $entity = new $entity_obj;
             switch ($entity_name){
                 case 'Area':
-                    $data_name = trim($this->mb_ucfirst($data_name, "UTF-8"));
+                    $data_name = mb_strtolower(trim($data_name));
+                    $data_name = $this->mb_ucfirst($data_name, "UTF-8");
 
-                    $clear_data_name_start = mb_strtolower(stristr($data_name, ' ', true));
-                    $clear_data_name_end = mb_strtolower(stristr($data_name, ' '));
-
+                    $clear_data_name_start = stristr($data_name, ' ', true);
+                    $clear_data_name_end = stristr($data_name, ' ');
+                    $area_pattern = '/^р[а-я]*н?/i';
+                    $region_pattern = '/^обл?/i';
                     if(!$clear_data_name_end){
-                        $data_name .= ' р-н.';
+                        $data_name .= ' р-н';
                     }else{
                         $clear_data_name_end = mb_substr($clear_data_name_end, 1);
-                        $area_pattern = '/^р-н?/';
-                        $region_pattern = '/^обл?/';
+
                         if(preg_match($area_pattern, $clear_data_name_start)){
                             $data_name = mb_stristr($data_name, ' ');
-                            $data_name = $data_name.' р-н.';
+                            $data_name = $data_name.' р-н';
                         }
 
                         if(preg_match($area_pattern, $clear_data_name_end)){
                             $data_name = mb_stristr($data_name, ' ', true);
-                            $data_name = $data_name.' р-н.';
+                            $data_name = $data_name.' р-н';
                         }
 
                         if(preg_match($region_pattern, $clear_data_name_start)){
@@ -202,8 +205,8 @@ class FindLostController extends Controller
                         $data_name .= ' ул.';
                     }else{
                         $clear_data_name_end = mb_substr($clear_data_name_end, 1);
-                        $street_pattern = '/^ул?/';
-                        $avenue_pattern = '/^пр?/';
+                        $street_pattern = '/^ул?/i';
+                        $avenue_pattern = '/^пр?/i';
                         if(preg_match($street_pattern, $clear_data_name_start)){
                             $data_name = mb_stristr($data_name, ' ');
                             $data_name = $data_name.' ул.';
@@ -233,6 +236,7 @@ class FindLostController extends Controller
                     }
                     break;
                 case 'Thing':
+                    $data_name = $this->mb_ucfirst(mb_strtolower($data_name), 'UTF-8');
                     $entity->setThing($data_name);
                     $entity->setBaseThing(0);
                     break;
@@ -299,8 +303,13 @@ class FindLostController extends Controller
             $area = $em->getRepository('AdminBundle:Area')->findOneBy(array(
                 'area' => $area_name
             ));
-            $area_id = $area->getId();
-            $streets = $repository->getStreetByAreaId($area_id);
+
+            if($area != null){
+                $area_id = $area->getId();
+                $streets = $repository->getStreetByAreaId($area_id);
+            }else{
+                $streets = $repository->getStreetByCityId($city_id);
+            }
         }else{
             $streets = $repository->getStreetByCityId($city_id);
         }
@@ -318,7 +327,7 @@ class FindLostController extends Controller
      *
      * */
     public function getThing(Request $request){
-        $things = $this->getDoctrine()->getRepository('AdminBundle:Thing')->getBaseThings();
+        $things = $this->getDoctrine()->getRepository('AdminBundle:Thing')->getThings();
 
         $response = new Response(json_encode($things));
         $response->headers->set('Content-Type', 'application/json; charset=utf-8');
