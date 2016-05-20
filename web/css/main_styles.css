@@ -17,6 +17,7 @@ nav, section {
 }
 body {
     line-height: 1.2;
+    font-family: sans-serif;
 }
 ol {
     padding-left: 1.4em;
@@ -35,4 +36,54 @@ table {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+#header{
+    background: url("../images/top_image.jpg") 100% 100% no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
+}
+
+#header a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#greetings {
+    float: right;
+}
+
+.popup_opacity_layer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 99;
+    display: none;
+}
+
+#dots_layer {
+    background: url('../images/dots.png');
+    position: relative;
+    z-index: 1;
+}
+
+.popup {
+    width: 600px;
+    margin: 0 auto;
+    background: #4a4a62;
+    position: relative;
+    z-index: 2;
+}
+
+.close_popup {
+    font-size: 30px;
+    color: #ffffff;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    cursor: pointer;
 }

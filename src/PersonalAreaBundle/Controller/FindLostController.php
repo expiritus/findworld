@@ -34,7 +34,7 @@ class FindLostController extends Controller
     {
         if($request->isMethod('POST')){
             $this->saveData($request, $action);
-            return $this->redirectToRoute('personal_area', array('action' => $action));
+            return $this->redirectToRoute('personal_area_index', array('action' => $action));
         }
 
         $userstatus = $this->getUser();

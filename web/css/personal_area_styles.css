@@ -45,6 +45,8 @@ table {
 #thing,
 #image_thing,
 #custom_thing,
-#description{
+#description,
+#example_area,
+#example_street{
     display: none;
 }

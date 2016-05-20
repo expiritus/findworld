@@ -1,13 +1,10 @@
 {% extends 'MainBundle::layout.html.twig' %}
+
 {% block body %}
-    <a class="start_link" href="{{ url('personal_area', { 'action': 'lost' }) }}">I lost</a>
-    <a class="start_link" href="{{ url('personal_area', { 'action': 'find' }) }}">I find</a>
-    <br>
-    {% if user_logged_in == false %}
-        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-        <a href="{{ url('fos_user_registration_register') }}">Register</a>
-        <a href="{{ url('fos_user_resetting_request') }}">Forgot password?</a>
-    {% else %}
-        <a class="start_link" href="{{ url('personal_area_index') }}">Personal Area</a>
-    {% endif %}
+    <div class="popup_opacity_layer">
+        <div class="popup">
+            <span class="close_popup">&times;</span>
+            <div class="dynamic_form"></div>
+        </div>
+    </div>
 {% endblock %}

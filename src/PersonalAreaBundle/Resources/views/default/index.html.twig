@@ -4,6 +4,7 @@
     <a class="start_link" href="{{ url('personal_area', { 'action': 'lost' }) }}">I lost</a>
     <a class="start_link" href="{{ url('personal_area', { 'action': 'find' }) }}">I find</a>
     <a class="start_link" href="{{ url('home') }}">Home</a>
+    <a class="start_link" href="{{ url('personal_area_index') }}">Personal Area</a>
     <a class="start_link" href="{{ url('fos_user_security_logout') }}">Logout</a>
 {% endblock %}
 {% block body %}
@@ -18,6 +19,7 @@
             {{ lost_thing.street }}
             {{ lost_thing.description }}
             {{ lost_thing.createdAt|date }}
+            <a href="{{ lost_thing.userId }}">{{ lost_thing.userName }}</a>
         {% endfor %}
     {% endif %}
     {% if find_things %}
@@ -31,6 +33,7 @@
             {{ find_thing.street }}
             {{ find_thing.description }}
             {{ find_thing.createdAt|date }}
+            <a href="{{ find_thing.userId }}">{{ find_thing.userName }}</a>
         {% endfor %}
     {% endif %}
 {% endblock %}

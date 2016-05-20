@@ -1,13 +1,13 @@
 $(document).ready(function(){
     var country = $("#country");
     var city =  $("#city");
-    var area = $("#area");
+    var area = $("#area, #example_area");
     var list_area = $("#list_area");
     var list_street = $("#list_street");
     var list_thing = $("#list_thing");
     var button_next = $("#button_next");
     var button_next2 = $("#button_next2");
-    var street = $("#street");
+    var street = $("#street, #example_street");
     var thing = $("#thing");
     var custom_thing = $("#custom_thing");
     var image_thing = $("#image_thing");
@@ -142,5 +142,29 @@ $(document).ready(function(){
         }else{
             thing.prop('disabled', false);
         }
+    });
+
+
+    $("#greetings a").on('click', function(){
+        if($(this).is("#login")){
+            $('.dynamic_form').load('/login form', function(){
+                $(".popup_opacity_layer").show();
+            });
+            return false;
+        }else if($(this).is("#register")){
+            $(".dynamic_form").load("/register form", function(){
+                $(".popup_opacity_layer").show();
+            });
+            return false;
+        }else if($(this).is("#forgot_password")){
+            $(".dynamic_form").load("/resetting/request form", function(){
+                $(".popup_opacity_layer").show();
+            });
+            return false;
+        }
+    });
+
+    $(".close_popup").on("click", function(){
+        $(".popup_opacity_layer").hide();
     });
 });
