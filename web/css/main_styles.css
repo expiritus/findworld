@@ -43,6 +43,7 @@ table {
     -webkit-background-size: cover;
     background-size: cover;
     color: #ffffff;
+    padding: 0 0 38% 0;
 }
 
 #header a{
@@ -66,7 +67,7 @@ table {
 }
 
 #dots_layer {
-    background: url('../images/dots.png');
+    /*background: url('../images/dots.png');*/
     position: relative;
     z-index: 1;
 }

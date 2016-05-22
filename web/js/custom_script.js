@@ -145,23 +145,95 @@ $(document).ready(function(){
     });
 
 
-    $("#greetings a").on('click', function(){
-        if($(this).is("#login")){
+    var form_url = "";
+    $(document).on('click', "#greetings a, .popup .login_link, .popup .register_link", function(){
+        if($(this).is(".login_link")){
             $('.dynamic_form').load('/login form', function(){
                 $(".popup_opacity_layer").show();
+                form_url = $(".dynamic_form form").attr('action');
             });
             return false;
-        }else if($(this).is("#register")){
+        }else if($(this).is(".register_link")){
             $(".dynamic_form").load("/register form", function(){
                 $(".popup_opacity_layer").show();
+                form_url = $(".dynamic_form form").attr('action');
             });
             return false;
-        }else if($(this).is("#forgot_password")){
+        }else if($(this).is(".forgot_password_link")){
             $(".dynamic_form").load("/resetting/request form", function(){
                 $(".popup_opacity_layer").show();
+                form_url = $(".dynamic_form form").attr('action');
             });
             return false;
         }
+    });
+
+    $(document).on('click', '#_submit', function(){
+        var csrf_token = $(".dynamic_form input[type='hidden']").val();
+        var user_name = $("#username").val();
+        var password = $("#password").val();
+        var remember_me = $("#remember_me").val();
+        $.ajax({
+            url: form_url,
+            method: 'post',
+            data: {
+                '_csrf_token': csrf_token,
+                '_username': user_name,
+                '_password': password,
+                '_remember_me': remember_me
+            },
+            success: function(data){
+                $(".dynamic_form").html(data);
+                return false;
+            }
+        });
+        return false;
+    });
+
+    $(document).on('click', '.fos_user_registration_register input[type="submit"]', function(){
+        var registration_email = $("#fos_user_registration_form_email").val();
+        var registration_user_name = $("#fos_user_registration_form_username").val();
+        var registration_password_firs = $("#fos_user_registration_form_plainPassword_first").val();
+        var registration_password_second = $("#fos_user_registration_form_plainPassword_second").val();
+        var registration_token = $("#fos_user_registration_form__token").val();
+        $.ajax({
+            url: form_url,
+            method: 'post',
+            data: {
+                'fos_user_registration_form[email]': registration_email,
+                'fos_user_registration_form[username]': registration_user_name,
+                'fos_user_registration_form[plainPassword][first]': registration_password_firs,
+                'fos_user_registration_form[plainPassword][second]': registration_password_second,
+                'fos_user_registration_form[_token]': registration_token
+            },
+            success: function(data){
+                $(".dynamic_form").html(data);
+                return false;
+            }
+        });
+        return false;
+    });
+
+
+    $("#find_lost_links a").on("click", function(){
+        if($(this).hasClass("start_link")){
+            $.ajax({
+                url: '/',
+                method: 'get',
+                async: false,
+                success: function(data){
+                    if(data == 'false'){
+                        $(".dynamic_form").load("/register form", function(){
+                            $(".popup_opacity_layer").show();
+                        });
+                    }else{
+                        window.location.href = "/personal_area";
+                        return false;
+                    }
+                }
+            });
+        }
+        return false;
     });
 
     $(".close_popup").on("click", function(){

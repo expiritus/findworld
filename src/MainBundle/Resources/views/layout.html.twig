@@ -3,9 +3,9 @@
     <div id="greetings">
         <span>
         {% if user_logged_in == false %}
-            <a id="login" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            <a id="register" href="{{ url('fos_user_registration_register') }}">Register</a>
-            <a id="forgot_password" href="{{ url('fos_user_resetting_request') }}">Forgot password?</a>
+            <a class="login_link" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            <a class="register_link" href="{{ url('fos_user_registration_register') }}">Register</a>
+            <a class="forgot_password_link" href="{{ url('fos_user_resetting_request') }}">Forgot password?</a>
         {% else %}
             <a class="start_link" href="{{ url('personal_area_index') }}">Personal Area</a>
         {% endif %}
@@ -17,8 +17,8 @@
             {% endif %}
         </span>
     </div>
-    <div>
-        <a class="start_link" href="{{ url('personal_area', { 'action': 'lost' }) }}">I lost</a>
-        <a class="start_link" href="{{ url('personal_area', { 'action': 'find' }) }}">I find</a>
+    <div id="find_lost_links">
+        <a class="start_link" id="lost" href="{{ url('personal_area', { 'action': 'lost' }) }}">I lost</a>
+        <a class="start_link" id="find" href="{{ url('personal_area', { 'action': 'find' }) }}">I find</a>
     </div>
 {% endblock %}
