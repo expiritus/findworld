@@ -169,19 +169,26 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '#_submit', function(){
+        var csrf_token_name_attr = $(".dynamic_form input[type='hidden']").attr("name");
         var csrf_token = $(".dynamic_form input[type='hidden']").val();
+
+        var user_name_name_attr = $("#username").attr("name");
         var user_name = $("#username").val();
+
+        var password_name_attr = $("#password").attr("name");
         var password = $("#password").val();
+
+        var remember_me_name_attr = $("#remember_me").attr("name");
         var remember_me = $("#remember_me").val();
+        var obj = {};
+            obj[csrf_token_name_attr] = csrf_token;
+            obj[user_name_name_attr] = user_name;
+            obj[password_name_attr] = password;
+            obj[remember_me_name_attr] = remember_me;
         $.ajax({
             url: form_url,
             method: 'post',
-            data: {
-                '_csrf_token': csrf_token,
-                '_username': user_name,
-                '_password': password,
-                '_remember_me': remember_me
-            },
+            data: obj,
             success: function(data){
                 $(".dynamic_form").html(data);
                 return false;
@@ -191,23 +198,55 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.fos_user_registration_register input[type="submit"]', function(){
+        var registration_email_name_attr = $("#fos_user_registration_form_email").attr("name");
         var registration_email = $("#fos_user_registration_form_email").val();
+
+        var registration_user_name_attr = $("#fos_user_registration_form_username").attr("name");
         var registration_user_name = $("#fos_user_registration_form_username").val();
-        var registration_password_firs = $("#fos_user_registration_form_plainPassword_first").val();
+
+        var registration_password_first_name_attr = $("#fos_user_registration_form_plainPassword_first").attr("name");
+        var registration_password_first = $("#fos_user_registration_form_plainPassword_first").val();
+
+        var registration_password_second_name_attr = $("#fos_user_registration_form_plainPassword_second").attr("name");
         var registration_password_second = $("#fos_user_registration_form_plainPassword_second").val();
+
+        var registration_token_name_attr = $("#fos_user_registration_form__token").attr("name");
         var registration_token = $("#fos_user_registration_form__token").val();
+
+        var obj = {};
+            obj[registration_email_name_attr] = registration_email;
+            obj[registration_user_name_attr] = registration_user_name;
+            obj[registration_password_first_name_attr] = registration_password_first;
+            obj[registration_password_second_name_attr] = registration_password_second;
+            obj[registration_token_name_attr] = registration_token;
         $.ajax({
             url: form_url,
             method: 'post',
-            data: {
-                'fos_user_registration_form[email]': registration_email,
-                'fos_user_registration_form[username]': registration_user_name,
-                'fos_user_registration_form[plainPassword][first]': registration_password_firs,
-                'fos_user_registration_form[plainPassword][second]': registration_password_second,
-                'fos_user_registration_form[_token]': registration_token
-            },
+            data: obj,
             success: function(data){
                 $(".dynamic_form").html(data);
+                $(".dynamic_form a[href='/login']").addClass('standard_login_link');
+                return false;
+            }
+        });
+        return false;
+    });
+
+    $(document).on("click", ".fos_user_resetting_request input[type='submit']", function(){
+
+        var username_name_attr = $(".fos_user_resetting_request #username").attr("name");
+        var resetting_form_username = $(".fos_user_resetting_request #username").val();
+        var obj = {};
+            obj[username_name_attr] = resetting_form_username;
+        console.info(obj);
+        $.ajax({
+            url: '/resetting/send-email',
+            method: 'post',
+            data: obj,
+            success: function(data){
+                console.info(data);
+                $(".dynamic_form").html(data);
+                $(".dynamic_form a[href='/login']").addClass('standard_login_link');
                 return false;
             }
         });
