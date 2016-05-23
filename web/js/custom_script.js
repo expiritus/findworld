@@ -183,7 +183,7 @@ $(document).ready(function(){
 
         var remember_me = $("#remember_me");
         var remember_me_name_attr = remember_me.attr("name");
-        var remember_me_val = $("#remember_me").val();
+        var remember_me_val = remember_me.val();
         var obj = {};
             obj[csrf_token_name_attr] = csrf_token_val;
             obj[user_name_name_attr] = user_name_val;

@@ -28,8 +28,8 @@
       <file leaf-file-name="custom_script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/js/custom_script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39559287">
-              <caret line="197" column="84" selection-start-line="197" selection-start-column="84" selection-end-line="197" selection-end-column="84" />
+            <state vertical-scroll-proportion="0.43336833">
+              <caret line="185" column="41" selection-start-line="185" selection-start-column="41" selection-end-line="185" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -598,7 +598,13 @@
       <option name="project" value="LOCAL" />
       <updated>1464036220121</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="make popup all forms">
+      <created>1464036992195</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1464036992195</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1023,8 +1029,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/custom_script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39559287">
-          <caret line="197" column="84" selection-start-line="197" selection-start-column="84" selection-end-line="197" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.43336833">
+          <caret line="185" column="41" selection-start-line="185" selection-start-column="41" selection-end-line="185" selection-end-column="41" />
           <folding />
         </state>
       </provider>
