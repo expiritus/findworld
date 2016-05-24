@@ -1,10 +1,12 @@
 $(document).ready(function(){
     var country = $("#country");
+    var custom_country = $("#custom_country");
     var city =  $("#city");
     var area = $("#area, #example_area");
     var list_area = $("#list_area");
     var list_street = $("#list_street");
     var list_thing = $("#list_thing");
+    var button_next0 = $("#button_next0");
     var button_next = $("#button_next");
     var button_next2 = $("#button_next2");
     var street = $("#street, #example_street");
@@ -13,11 +15,16 @@ $(document).ready(function(){
     var image_thing = $("#image_thing");
     var description = $("#description");
 
-    country.on('change', function(){
+
+    function getCity(country_id){
         city.empty();
         list_area.empty();
-        var country_id = $("#country").val();
+        if(country_id == -1){
+            custom_country.show();
+            button_next0.show();
+        }else if(country_id == 0){
             city.hide();
+            area.hide();
             street.hide();
             button_next.hide();
             button_next2.hide();
@@ -26,11 +33,18 @@ $(document).ready(function(){
             image_thing.hide();
             custom_thing.hide();
             description.hide();
+        }else{
             city.show();
+        }
         $.ajax({
             url: '/get_city/'+country_id,
-            method: 'get',
+            method: 'post',
+            data: {
+                'country_id': country_id,
+                'country_name': country_id
+            },
             success: function(data){
+                console.info(data);
                 $(city).append("<option value='0'>Select city</option>");
                 $.each(data, function(index, value){
                     $(city).append('<option value="'+value.id+'">'+value.city+'</option>')
@@ -38,7 +52,41 @@ $(document).ready(function(){
 
             }
         });
+    }
+
+    country.on('change', function(){
+        var country_id = country.val();
+        country_id = parseInt(country_id);
+        getCity(country_id);
     });
+
+    button_next0.on('click', function(){
+        var custom_country_val = custom_country.val();
+        if(custom_country_val.length == 0){
+            return false;
+        }else{
+            var country_id = custom_country.val();
+            getCity(country_id);
+            button_next0.hide();
+        }
+    });
+
+    custom_country.on('keyup', function(){
+        var custom_country_value = $(custom_country).val();
+        if(custom_country_value.length > 0){
+            country.prop('disabled', true);
+        }else{
+            country.prop('disabled', false);
+        }
+    }).blur(function(){
+        var custom_country_value = $(custom_country).val();
+        if(custom_country_value.length > 0){
+            country.prop('disabled', true);
+        }else{
+            country.prop('disabled', false);
+        }
+    });
+
 
     city.on("change", function(){
         area.val('');
@@ -194,9 +242,13 @@ $(document).ready(function(){
             method: 'post',
             data: obj,
             success: function(data){
-                $(".dynamic_form").html(data);
-                $(".dynamic_form a[href='/login']").addClass('standard_login_link');
-                return false;
+                if(data == 'true'){
+                    location.reload();
+                }else{
+                    $(".dynamic_form").html(data);
+                    $(".dynamic_form a[href='/login']").addClass('standard_login_link');
+                    return false;
+                }
             }
         });
         return false;
@@ -234,6 +286,7 @@ $(document).ready(function(){
             method: 'post',
             data: obj,
             success: function(data){
+                console.info(data);
                 $(".dynamic_form").html(data);
                 $(".dynamic_form a[href='/login']").addClass('standard_login_link');
                 return false;
@@ -255,7 +308,6 @@ $(document).ready(function(){
             method: 'post',
             data: obj,
             success: function(data){
-                console.info(data);
                 $(".dynamic_form").html(data);
                 $(".dynamic_form a[href='/login']").addClass('standard_login_link');
                 return false;

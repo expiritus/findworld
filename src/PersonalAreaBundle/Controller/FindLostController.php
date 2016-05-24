@@ -52,13 +52,31 @@ class FindLostController extends Controller
 
 
     private function saveData(Request $request, $action){
-        $country_id = (int)htmlspecialchars($request->request->get('country'));
+        $country_id = htmlspecialchars($request->request->get('country'));
         $city_id = htmlspecialchars($request->request->get('city'));
         $area_name = htmlspecialchars($request->request->get('area'));
         $street_name = htmlspecialchars($request->request->get('street'));
         $thing = htmlspecialchars($request->request->get('thing'));
         $description = htmlspecialchars($request->request->get('description'));
         $image_thing = $request->files->get("image_thing");
+
+        $action = ucfirst($action);
+        $find_lost_entity = '\AdminBundle\Entity\\'.$action;
+        $find_lost_obj = new $find_lost_entity;
+        $em = $this->getDoctrine()->getManager();
+
+        if(empty($country_id)){
+            $country = htmlspecialchars($request->request->get('custom_country'));
+        }
+
+        if($country){
+            $entity_name = 'Country';
+            $parent_id = array(null);
+            $parent_associated_obj = array(null);
+            $country = $this->checkData($country, $parent_id, $parent_associated_obj, $em, $entity_name);
+            $find_lost_obj->setCountry($country);
+            $country_id = $country->getId();
+        }
 
         if(empty($thing)){
             $thing = htmlspecialchars($request->request->get('custom_thing'));
@@ -67,16 +85,15 @@ class FindLostController extends Controller
         }
 
 
-        $action = ucfirst($action);
-        $find_lost_entity = '\AdminBundle\Entity\\'.$action;
-        $find_lost_obj = new $find_lost_entity;
-        $em = $this->getDoctrine()->getManager();
+
 
         $country = $em->getRepository('AdminBundle:Country')->find($country_id);
         $find_lost_obj->setCountry($country);
 
         $city = $em->getRepository('AdminBundle:City')->find($city_id);
         $find_lost_obj->setCity($city);
+
+
 
         if($area_name){
             $entity_name = 'Area';
@@ -133,7 +150,11 @@ class FindLostController extends Controller
     private function checkData($data_name, array $parent_id = null, array $parent_associated_obj = null, $em, $entity_name){
         $repository = 'AdminBundle:'.$entity_name;
         $column = strtolower($entity_name);
-        if(count($parent_id) == 1){
+        if($parent_id[0] == null){
+            $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
+                $column => $data_name
+            ));
+        }elseif(count($parent_id) == 1 and $parent_id != null){
             $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
                 $column => $data_name,
                 key($parent_id) => $parent_id['cityId']
@@ -155,6 +176,11 @@ class FindLostController extends Controller
             $entity_obj = '\AdminBundle\Entity\\'.$entity_name;
             $entity = new $entity_obj;
             switch ($entity_name){
+                case 'Country':
+                    $data_name = mb_strtolower(trim($data_name));
+                    $data_name = $this->mb_ucfirst($data_name, "UTF-8");
+                    $entity->setCountry($data_name);
+                    break;
                 case 'Area':
                     $data_name = mb_strtolower(trim($data_name));
                     $data_name = $this->mb_ucfirst($data_name, "UTF-8");
@@ -262,10 +288,15 @@ class FindLostController extends Controller
      * @Route("/get_city/{country_id}", name="get_city")
      *
      * */
-    public function getCity($country_id){
-        $country_id = htmlspecialchars($country_id);
+    public function getCity(Request $request){
+        $country_id = (int)htmlspecialchars($request->request->get("country_id"));
+        $country_name = htmlspecialchars($request->request->get("country_name"));
         $repository = $this->getDoctrine()->getRepository('AdminBundle:City');
-        $cities = $repository->getCityByCountryId($country_id);
+        if(is_integer($country_id) and $country_id != false){
+            $cities = $repository->getCityByCountryId($country_id);
+        }else{
+            $cities = $repository->getCityByCountryName($country_name);
+        }
         $response = new Response(json_encode($cities));
         $response->headers->set('Content-Type', 'application/json; charset=utf-8');
         return $response;

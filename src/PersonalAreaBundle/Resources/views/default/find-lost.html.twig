@@ -5,10 +5,22 @@
         <p>
             <select name="country" id="country">
                 <option value="0">Select country</option>
+                <option value="-1">Other county</option>
                 {% for country in countries %}
                     <option value="{{ country.id }}">{{ country.country }}</option>
                 {% endfor %}
             </select>
+        </p>
+        <p>
+            <input type="text" list="list_country" name="custom_country" id="custom_country" placeholder="custom_country" autocomplete="off">
+            <datalist id="list_country">
+                {% for country in countries %}
+                    <option value="{{ country.country }}"></option>
+                {% endfor %}
+            </datalist>
+        </p>
+        <p>
+            <button type="button" id="button_next0">Next</button>
         </p>
         <p>
             <select name="city" id="city"></select>
@@ -33,7 +45,6 @@
         <p>
             <select name="thing" id="thing"></select>
         </p>
-
         <p>
             <input type="text" list="list_thing" name="custom_thing" id="custom_thing" placeholder="custom_thing" autocomplete="off">
             <datalist id="list_thing"></datalist>

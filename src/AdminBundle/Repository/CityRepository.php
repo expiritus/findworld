@@ -18,4 +18,12 @@ class CityRepository extends \Doctrine\ORM\EntityRepository
             ->getArrayResult();
 
     }
+
+    public function getCityByCountryName($country_name){
+        return $this->getEntityManager()
+            ->createQuery("SELECT c FROM AdminBundle:City c WHERE c.countryId = (SELECT k FROM AdminBundle:Country k WHERE k.country = :country)")
+            ->setParameter('country', $country_name)
+            ->getArrayResult();
+
+    }
 }
