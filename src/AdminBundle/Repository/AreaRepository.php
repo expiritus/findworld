@@ -18,6 +18,14 @@ class AreaRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    public function getAreaByCityName($city_name){
+        return $this->getEntityManager()
+            ->createQuery("SELECT c FROM AdminBundle:Area c WHERE c.cityId = (SELECT k FROM AdminBundle:City k WHERE k.city = :city)")
+            ->setParameter('city', $city_name)
+            ->getArrayResult();
+
+    }
+
     public function getAreaByName($area_name){
         return $this->getEntityManager()
             ->createQuery("SELECT a FROM AdminBundle:Area a WHERE a.area = :area_name")

@@ -39,9 +39,10 @@ table {
 
 #city,
 #area,
-#button_next0,
-#button_next,
+#button_next1,
 #button_next2,
+#button_next3,
+#button_next4,
 #street,
 #thing,
 #image_thing,
@@ -49,6 +50,7 @@ table {
 #description,
 #example_area,
 #example_street,
-#custom_country{
+#custom_country,
+#custom_city{
     display: none;
 }

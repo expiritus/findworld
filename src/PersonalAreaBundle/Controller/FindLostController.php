@@ -308,10 +308,16 @@ class FindLostController extends Controller
      * @Route("/get_area/{city_id}", name="get_area")
      *
      * */
-    public function getArea($city_id){
-        $city_id = htmlspecialchars($city_id);
+    public function getArea(Request $request){
+        $city_id = (int)htmlspecialchars($request->request->get("city_id"));
+        $city_name = htmlspecialchars($request->request->get("city_name"));
         $repository = $this->getDoctrine()->getRepository('AdminBundle:Area');
-        $areas = $repository->getAreaByCityId($city_id);
+        if(is_integer($city_id) and $city_id != false){
+            $areas = $repository->getAreaByCityId($city_id);
+        }else{
+            $areas = $repository->getAreaByCityName($city_name);
+        }
+
         $response = new Response(json_encode($areas));
         $response->headers->set('Content-Type', 'application/json; charset=utf-8');
         return $response;
