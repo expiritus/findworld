@@ -25,14 +25,14 @@ class City
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
      */
     private $city;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="country_id", type="integer")
+     * @ORM\Column(name="country_id", type="integer", nullable=true)
      */
     private $countryId;
 

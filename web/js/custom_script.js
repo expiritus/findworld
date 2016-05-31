@@ -76,7 +76,7 @@ $(document).ready(function(){
     });
 
     custom_country.on('keyup', function(){
-        var custom_country_value = $(custom_country).val();
+        var custom_country_value = custom_country.val();
         if(custom_country_value.length > 0){
             country.prop('disabled', true);
         }else{

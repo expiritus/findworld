@@ -34,7 +34,7 @@ class FindLostController extends Controller
     {
         if($request->isMethod('POST')){
             $this->saveData($request, $action);
-            return $this->redirectToRoute('personal_area_index', array('action' => $action));
+            return $this->redirectToRoute('personal_area_index');
         }
 
         $userstatus = $this->getUser();
@@ -67,16 +67,31 @@ class FindLostController extends Controller
 
         if(empty($country_id)){
             $country = htmlspecialchars($request->request->get('custom_country'));
+            if($country){
+                $entity_name = 'Country';
+                $parent_id = array(null);
+                $parent_associated_obj = array(null);
+                $country = $this->checkData($country, $parent_id, $parent_associated_obj, $em, $entity_name);
+                $find_lost_obj->setCountry($country);
+                $country_id = $country->getId();
+            }
         }
 
-        if($country){
-            $entity_name = 'Country';
-            $parent_id = array(null);
-            $parent_associated_obj = array(null);
-            $country = $this->checkData($country, $parent_id, $parent_associated_obj, $em, $entity_name);
-            $find_lost_obj->setCountry($country);
-            $country_id = $country->getId();
+        $country = $em->getRepository('AdminBundle:Country')->find($country_id);
+        $find_lost_obj->setCountry($country);
+
+        if(empty($city_id)){
+            $city = htmlspecialchars($request->request->get('custom_city'));
+            if($city){
+                $entity_name = 'City';
+                $parent_id = array('countryId' => $country_id);
+                $parent_associated_obj = array('country' => $country);
+                $city = $this->checkData($city, $parent_id, $parent_associated_obj, $em, $entity_name);
+                $find_lost_obj->setCity($city);
+                $city_id = $city->getId();
+            }
         }
+
 
         if(empty($thing)){
             $thing = htmlspecialchars($request->request->get('custom_thing'));
@@ -84,21 +99,13 @@ class FindLostController extends Controller
             $thing = (int)$thing;
         }
 
-
-
-
-        $country = $em->getRepository('AdminBundle:Country')->find($country_id);
-        $find_lost_obj->setCountry($country);
-
         $city = $em->getRepository('AdminBundle:City')->find($city_id);
         $find_lost_obj->setCity($city);
-
-
 
         if($area_name){
             $entity_name = 'Area';
             $parent_id = array('cityId' => $city_id);
-            $parent_associated_obj = array('city' => $city, 'country' =>$country);
+            $parent_associated_obj = array('city' => $city, 'country' => $country);
             $area = $this->checkData($area_name, $parent_id, $parent_associated_obj, $em, $entity_name);
             $find_lost_obj->setArea($area);
             $area_id = $area->getId();
@@ -150,17 +157,17 @@ class FindLostController extends Controller
     private function checkData($data_name, array $parent_id = null, array $parent_associated_obj = null, $em, $entity_name){
         $repository = 'AdminBundle:'.$entity_name;
         $column = strtolower($entity_name);
-        if($parent_id[0] == null){
-            $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
-                $column => $data_name
-            ));
-        }elseif(count($parent_id) == 1 and $parent_id != null){
+       if(count($parent_id) == 1 and current($parent_id) != null){
             $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
                 $column => $data_name,
-                key($parent_id) => $parent_id['cityId']
+                key($parent_id) => $parent_id[key($parent_id)]
             ));
         }elseif(count($parent_id) == 2) {
             $check_isset_obj = $em->getRepository($repository)->getStreetByParent($data_name, $parent_id);
+        }elseif($parent_id[0] == null){
+            $check_isset_obj = $em->getRepository($repository)->findOneBy(array(
+                $column => $data_name
+            ));
         }else{
             if(is_integer($data_name)){
                 $data_name = $em->getRepository($repository)->find($data_name);
@@ -180,6 +187,12 @@ class FindLostController extends Controller
                     $data_name = mb_strtolower(trim($data_name));
                     $data_name = $this->mb_ucfirst($data_name, "UTF-8");
                     $entity->setCountry($data_name);
+                    break;
+                case 'City':
+                    $data_name = mb_strtolower(trim($data_name));
+                    $data_name = $this->mb_ucfirst($data_name, "UTF-8");
+                    $entity->setCity($data_name);
+                    $entity->setCountry($parent_associated_obj['country']);
                     break;
                 case 'Area':
                     $data_name = mb_strtolower(trim($data_name));

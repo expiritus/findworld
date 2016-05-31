@@ -11,7 +11,11 @@
     {% if lost_things %}
         <h1>Я потерял</h1>
         {% for lost_thing in lost_things %}
-            <img width="170" src="{{ asset('files/') }}{{ lost_thing.fileName }}" alt="">
+            {% if lost_thing.fileName %}
+                <img width="170" src="{{ asset('files/') }}{{ lost_thing.fileName }}" alt="">
+            {% else %}
+                <img width="170" src="{{ asset('files/default.jpg') }}" alt="">
+            {% endif %}
             {{ lost_thing.country }}
             {{ lost_thing.thing }}
             {{ lost_thing.city }}
@@ -25,7 +29,11 @@
     {% if find_things %}
         <h1>Я нашел</h1>
         {% for find_thing in find_things %}
-            <img width="170" src="{{ asset('files/') }}{{ find_thing.fileName }}" alt="">
+            {% if find_thing.filename %}
+                <img width="170" src="{{ asset('files/') }}{{ find_thing.fileName }}" alt="">
+            {% else %}
+                <img width="170" src="{{ asset('files/default.jpg') }}" alt="">
+            {% endif %}
             {{ find_thing.country }}
             {{ find_thing.thing }}
             {{ find_thing.city }}
