@@ -25,7 +25,7 @@ class Find
     /**
      * @var int
      *
-     * @ORM\Column(name="thing_id", type="integer", nullable=true)
+     * @ORM\Column(name="thing_id", type="integer")
      */
     private $thingId;
 
@@ -53,7 +53,7 @@ class Find
     /**
      * @var int
      *
-     * @ORM\Column(name="country_id", type="integer", nullable=true)
+     * @ORM\Column(name="country_id", type="integer")
      */
     private $countryId;
 

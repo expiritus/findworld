@@ -198,37 +198,22 @@ class FindLostController extends Controller
                     $data_name = mb_strtolower(trim($data_name));
                     $data_name = $this->mb_ucfirst($data_name, "UTF-8");
 
-                    $clear_data_name_start = stristr($data_name, ' ', true);
-                    $clear_data_name_end = stristr($data_name, ' ');
-                    $area_pattern = '/^р[а-я]*н?/i';
-                    $region_pattern = '/^обл?/i';
-                    if(!$clear_data_name_end){
-                        $data_name .= ' р-н';
+                    $area_pattern = '/р[а-я_-]*[н.]?/i';
+                    $region_pattern = '/обл[а-я_-]*[ь.]?/i';
+                    if(preg_match($area_pattern, $data_name, $m)){
+                        $str = $m[0];
+                        $postfix = mb_strpos($data_name, $str);
+                        $data_name = mb_substr($data_name, 0, $postfix);
+                        $data_name = $data_name." р-н";
+                    }else if(preg_match($region_pattern, $data_name, $m)){
+                        $str = $m[0];
+                        $postfix = mb_strpos($data_name, $str);
+                        $data_name = mb_substr($data_name, 0, $postfix);
+                        $data_name = $data_name." обл.";
                     }else{
-                        $clear_data_name_end = mb_substr($clear_data_name_end, 1);
-
-                        if(preg_match($area_pattern, $clear_data_name_start)){
-                            $data_name = mb_stristr($data_name, ' ');
-                            $data_name = $data_name.' р-н';
-                        }
-
-                        if(preg_match($area_pattern, $clear_data_name_end)){
-                            $data_name = mb_stristr($data_name, ' ', true);
-                            $data_name = $data_name.' р-н';
-                        }
-
-                        if(preg_match($region_pattern, $clear_data_name_start)){
-                            $data_name = mb_stristr($data_name, ' ');
-                            $data_name = $data_name.' обл.';
-                        }
-
-                        if(preg_match($region_pattern, $clear_data_name_end)){
-                            $data_name = mb_stristr($data_name, ' ', true);
-                            $data_name = $data_name.' обл.';
-                        }
+                        $data_name = $data_name." р-н";
                     }
 
-                    $data_name = $this->mb_ucfirst(trim($data_name), 'UTF-8');
                     $entity->setArea($data_name);
                     $entity->setCountry($parent_associated_obj['country']);
                     if(isset($parent_associated_obj['city'])){
@@ -236,38 +221,26 @@ class FindLostController extends Controller
                     }
                     break;
                 case 'Street':
-                    $data_name = trim($this->mb_ucfirst($data_name, "UTF-8"));
-                    $clear_data_name_start = mb_strtolower(stristr($data_name, ' ', true));
-                    $clear_data_name_end = mb_strtolower(stristr($data_name, ' '));
+                    $data_name = mb_strtolower(trim($data_name));
+                    $data_name = $this->mb_ucfirst($data_name, "UTF-8");
 
-                    if(!$clear_data_name_end){
-                        $data_name .= ' ул.';
+                    $street_pattern = '/ул[а-я_-]*[а.]?/i';
+                    $avenue_pattern = '/пр[а-я_-]*[т.]?/i';
+                    if(preg_match($street_pattern, $data_name, $m)){
+                        $str = $m[0];
+                        $postfix = mb_strpos($data_name, $str);
+                        $data_name = mb_substr($data_name, 0, $postfix);
+                        $data_name = $data_name." ул.";
+                    }else if(preg_match($avenue_pattern, $data_name, $m)){
+                        $str = $m[0];
+                        $postfix = mb_strpos($data_name, $str);
+                        $data_name = mb_substr($data_name, 0, $postfix);
+                        $data_name = $data_name." пр.";
                     }else{
-                        $clear_data_name_end = mb_substr($clear_data_name_end, 1);
-                        $street_pattern = '/^ул?/i';
-                        $avenue_pattern = '/^пр?/i';
-                        if(preg_match($street_pattern, $clear_data_name_start)){
-                            $data_name = mb_stristr($data_name, ' ');
-                            $data_name = $data_name.' ул.';
-                        }
-
-                        if(preg_match($street_pattern, $clear_data_name_end)){
-                            $data_name = mb_stristr($data_name, ' ', true);
-                            $data_name = $data_name.' ул.';
-                        }
-
-                        if(preg_match($avenue_pattern, $clear_data_name_start)){
-                            $data_name = mb_stristr($data_name, ' ');
-                            $data_name = $data_name.' пр.';
-                        }
-
-                        if(preg_match($avenue_pattern, $clear_data_name_end)){
-                            $data_name = mb_stristr($data_name, ' ', true);
-                            $data_name = $data_name.' пр.';
-                        }
+                        $data_name = $data_name." ул.";
                     }
 
-                    $data_name = $this->mb_ucfirst(trim($data_name), 'UTF-8');
+
                     $entity->setStreet($data_name);
                     $entity->setCity($parent_associated_obj['city']);
                     if(isset($parent_associated_obj['area'])){
