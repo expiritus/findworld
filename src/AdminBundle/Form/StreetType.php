@@ -17,6 +17,7 @@ class StreetType extends AbstractType
         $builder
             ->add('street')
             ->add('area')
+            ->add('city')
         ;
     }
     

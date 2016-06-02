@@ -16,6 +16,7 @@ class AreaType extends AbstractType
     {
         $builder
             ->add('area')
+            ->add('country')
             ->add('city')
         ;
     }

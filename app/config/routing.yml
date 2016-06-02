@@ -1,3 +1,11 @@
+admin_street:
+    resource: "@AdminBundle/Controller/StreetController.php"
+    type:     annotation
+
+admin_area:
+    resource: "@AdminBundle/Controller/AreaController.php"
+    type:     annotation
+
 admin_user:
     resource: "@AdminBundle/Controller/UserController.php"
     type:     annotation
