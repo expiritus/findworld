@@ -13,6 +13,7 @@ use AdminBundle\Entity\Area;
 use AdminBundle\Entity\Lost;
 use AdminBundle\Entity\Find;
 use AdminBundle\Entity\Street;
+use PersonalAreaBundle\Controller\SearchController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,7 +34,19 @@ class FindLostController extends Controller
     public function findLostAction(Request $request, $action)
     {
         if($request->isMethod('POST')){
-            $this->saveData($request, $action);
+            $data_id = $this->saveData($request, $action);
+            $entity = ucfirst($action);
+            $repository = "AdminBundle:".$entity;
+            $desired_thing_data = $this->getDoctrine()->getRepository($repository)->desiredThing($data_id, $repository);
+            if($entity == 'Lost'){
+                $all_find_lost_things = $this->getDoctrine()->getRepository('AdminBundle:Find')->getAllThings();
+            }
+
+            if($entity == 'Find'){
+                $all_find_lost_things = $this->getDoctrine()->getRepository('AdminBundle:Lost')->getAllThings();
+            }
+            $search = new SearchController($desired_thing_data, $all_find_lost_things);
+            $search->search();
             return $this->redirectToRoute('personal_area_index');
         }
 
@@ -152,6 +165,7 @@ class FindLostController extends Controller
 
         $em->persist($find_lost_obj);
         $em->flush();
+        return $find_lost_obj->getId();
     }
 
     private function checkData($data_name, array $parent_id = null, array $parent_associated_obj = null, $em, $entity_name){

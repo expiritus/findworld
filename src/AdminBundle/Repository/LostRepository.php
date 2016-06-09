@@ -10,4 +10,16 @@ namespace AdminBundle\Repository;
  */
 class LostRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function desiredThing($data_id, $repository){
+        return $this->getEntityManager()
+            ->createQuery("SELECT t FROM ".$repository." t WHERE t.id = :data_id")
+            ->setParameter('data_id', $data_id)
+            ->getArrayResult();
+    }
+
+    public function getAllThings(){
+        return $this->getEntityManager()
+            ->createQuery("SELECT f FROM AdminBundle:Lost f")
+            ->getArrayResult();
+    }
 }
