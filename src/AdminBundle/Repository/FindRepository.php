@@ -22,4 +22,11 @@ class FindRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery("SELECT f FROM AdminBundle:Find f")
             ->getArrayResult();
     }
+
+    public function getMatchByIds($ids_match_things){
+        return $this->getEntityManager()
+            ->createQuery("SELECT m FROM AdminBundle:Find m WHERE m.id IN (:ids)")
+            ->setParameter('ids', $ids_match_things)
+            ->getResult();
+    }
 }

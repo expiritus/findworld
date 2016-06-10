@@ -1,0 +1,22 @@
+{% extends "PersonalAreaBundle:layout.html.twig" %}
+
+{% block body %}
+    {% if match_things %}
+        <h1>Совпадения</h1>
+        {% for match_thing in match_things %}
+            {% if match_thing.fileName %}
+                <img width="170" src="{{ asset('files/') }}{{ match_thing.fileName }}" alt="">
+            {% else %}
+                <img width="170" src="{{ asset('files/default.jpg') }}" alt="">
+            {% endif %}
+            {{ match_thing.country }}
+            {{ match_thing.thing }}
+            {{ match_thing.city }}
+            {{ match_thing.area }}
+            {{ match_thing.street }}
+            {{ match_thing.description }}
+            {{ match_thing.createdAt|date }}
+            <a href="{{ match_thing.userId }}">{{ match_thing.userName }}</a>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

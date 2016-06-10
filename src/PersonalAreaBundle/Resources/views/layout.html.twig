@@ -1,1 +1,9 @@
 {% extends "::personal_area/personal_area.html.twig" %}
+
+{% block header %}
+    <a class="start_link" href="{{ url('personal_area', { 'action': 'lost' }) }}">I lost</a>
+    <a class="start_link" href="{{ url('personal_area', { 'action': 'find' }) }}">I find</a>
+    <a class="start_link" href="{{ url('home') }}">Home</a>
+    <a class="start_link" href="{{ url('personal_area_index') }}">Personal Area</a>
+    <a class="start_link" href="{{ url('fos_user_security_logout') }}">Logout</a>
+{% endblock %}

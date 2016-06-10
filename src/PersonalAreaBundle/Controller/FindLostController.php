@@ -35,19 +35,7 @@ class FindLostController extends Controller
     {
         if($request->isMethod('POST')){
             $data_id = $this->saveData($request, $action);
-            $entity = ucfirst($action);
-            $repository = "AdminBundle:".$entity;
-            $desired_thing_data = $this->getDoctrine()->getRepository($repository)->desiredThing($data_id, $repository);
-            if($entity == 'Lost'){
-                $all_find_lost_things = $this->getDoctrine()->getRepository('AdminBundle:Find')->getAllThings();
-            }
-
-            if($entity == 'Find'){
-                $all_find_lost_things = $this->getDoctrine()->getRepository('AdminBundle:Lost')->getAllThings();
-            }
-            $search = new SearchController($desired_thing_data, $all_find_lost_things);
-            $search->search();
-            return $this->redirectToRoute('personal_area_index');
+            return $this->redirectToRoute('search', array('action' => $action, 'data_id' => $data_id), 301);
         }
 
         $userstatus = $this->getUser();
@@ -61,6 +49,38 @@ class FindLostController extends Controller
         }else{
             return $this->redirectToRoute('fos_user_security_login');
         }
+    }
+
+    /**
+     *
+     * @Route("/personal_area/search/{action}/{data_id}", name="search")
+     *
+     */
+    public function searchAction($action, $data_id){
+        $entity = ucfirst($action);
+        $repository = "AdminBundle:".$entity;
+        $desired_thing_data = $this->getDoctrine()->getRepository($repository)->desiredThing($data_id, $repository);
+        if($entity == 'Lost'){
+            $reverse_entity = 'Find';
+            $all_find_lost_things = $this->getDoctrine()->getRepository('AdminBundle:Find')->getAllThings();
+        }
+
+        if($entity == 'Find'){
+            $reverse_entity = 'Lost';
+            $all_find_lost_things = $this->getDoctrine()->getRepository('AdminBundle:Lost')->getAllThings();
+        }
+
+        $search = new SearchController($desired_thing_data, $all_find_lost_things);
+        $search->search();
+        $ids_match_things = $search->getIdsMatchThings();
+        $repository = 'AdminBundle:'.$reverse_entity;
+        $match_things = $this->getDoctrine()->getRepository($repository)->getMatchByIds($ids_match_things);
+//        echo "<pre>";
+//        print_r($match_things);
+//        die();
+        return $this->render('PersonalAreaBundle:search:index.html.twig', array(
+            'match_things' => $match_things
+        ));
     }
 
 

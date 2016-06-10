@@ -1,4 +1,4 @@
-{% extends "PersonalAreaBundle:default:index.html.twig" %}
+{% extends "PersonalAreaBundle:layout.html.twig" %}
 
 {% block body %}
     <form action="{{ url('personal_area', { 'action': action }) }}" method="post" enctype="multipart/form-data">
