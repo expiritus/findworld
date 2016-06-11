@@ -1,5 +1,7 @@
 {% extends "::personal_area/personal_area.html.twig" %}
 
+
+{% block title %}Personal Area{% endblock %}
 {% block header %}
     <a class="start_link" href="{{ url('personal_area', { 'action': 'lost' }) }}">I lost</a>
     <a class="start_link" href="{{ url('personal_area', { 'action': 'find' }) }}">I find</a>

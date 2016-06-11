@@ -2,22 +2,26 @@
 
 {% block body %}
     {% if match_things %}
-        <h1>Совпадения</h1>
-        {% for match_thing in match_things %}
-            {% if match_thing.fileName %}
-                <img width="170" src="{{ asset('files/') }}{{ match_thing.fileName }}" alt="">
-            {% else %}
-                <img width="170" src="{{ asset('files/default.jpg') }}" alt="">
-            {% endif %}
-            {{ match_thing.country }}
-            {{ match_thing.thing }}
-            {{ match_thing.city }}
-            {{ match_thing.area }}
-            {{ match_thing.street }}
-            {{ match_thing.description }}
-            {{ match_thing.createdAt|date }}
-            Нашел: <a href="/user/{{ match_thing.userId }}">{{ match_thing.userName }}</a>
-        {% endfor %}
+        <div id="match">
+            <h1>Совпадения</h1>
+            {% for match_thing in match_things %}
+                <div class="match_block">
+                    {% if match_thing.fileName %}
+                        <img width="170" src="{{ asset('files/') }}{{ match_thing.fileName }}" alt="">
+                    {% else %}
+                        <img width="170" src="{{ asset('files/default.jpg') }}" alt="">
+                    {% endif %}
+                    {{ match_thing.country }}
+                    {{ match_thing.thing }}
+                    {{ match_thing.city }}
+                    {{ match_thing.area }}
+                    {{ match_thing.street }}
+                    {{ match_thing.description }}
+                    {{ match_thing.createdAt|date }}
+                    Нашел: <a href="/user/{{ match_thing.userId }}">{{ match_thing.userName }}</a>
+                </div>
+            {% endfor %}
+        </div>
     {% else %}
         Пока похожих вещей нет, но если кто то ее найдет, то мы сообщим вам по Eamil. Спасибо что вы с нами.
     {% endif %}
