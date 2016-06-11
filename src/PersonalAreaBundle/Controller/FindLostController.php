@@ -76,12 +76,7 @@ class FindLostController extends Controller
         $search->search();
         $ids_match_things = $search->getIdsMatchThings();
         if($request->isXmlHttpRequest()){
-            if(!$ids_match_things){
-                die(json_encode(0));
-            }else{
-                die(json_encode(count($ids_match_things)));
-            }
-
+            die(json_encode(count($ids_match_things)));
         }
         $repository = 'AdminBundle:'.$reverse_entity;
         $match_things = $this->getDoctrine()->getRepository($repository)->getMatchByIds($ids_match_things);
