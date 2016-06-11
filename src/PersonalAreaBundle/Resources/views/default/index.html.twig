@@ -2,39 +2,49 @@
 
 {% block body %}
     {% if lost_things %}
-        <h1>Я потерял</h1>
-        {% for lost_thing in lost_things %}
-            {% if lost_thing.fileName %}
-                <img width="170" src="{{ asset('files/') }}{{ lost_thing.fileName }}" alt="">
-            {% else %}
-                <img width="170" src="{{ asset('files/default.jpg') }}" alt="">
-            {% endif %}
-            {{ lost_thing.country }}
-            {{ lost_thing.thing }}
-            {{ lost_thing.city }}
-            {{ lost_thing.area }}
-            {{ lost_thing.street }}
-            {{ lost_thing.description }}
-            {{ lost_thing.createdAt|date }}
-            <a href="{{ lost_thing.userId }}">{{ lost_thing.userName }}</a>
-        {% endfor %}
+        <div id="lost_section">
+            <h1>Я потерял</h1>
+            {% for lost_thing in lost_things %}
+                <div class="lost_block">
+                    {% if lost_thing.fileName %}
+                        <img width="170" src="{{ asset('files/') }}{{ lost_thing.fileName }}" alt="">
+                    {% else %}
+                        <img width="170" src="{{ asset('files/default.jpg') }}" alt="">
+                    {% endif %}
+                    {{ lost_thing.country }}
+                    {{ lost_thing.thing }}
+                    {{ lost_thing.city }}
+                    {{ lost_thing.area }}
+                    {{ lost_thing.street }}
+                    {{ lost_thing.description }}
+                    {{ lost_thing.createdAt|date }}
+                    Количество совпадений: <a class="count_match" href="#"></a>
+                    <input id="lost_thing_id" type="hidden" name="lost_thing_id" value="{{ lost_thing.id }}">
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
     {% if find_things %}
-        <h1>Я нашел</h1>
-        {% for find_thing in find_things %}
-            {% if find_thing.filename %}
-                <img width="170" src="{{ asset('files/') }}{{ find_thing.fileName }}" alt="">
-            {% else %}
-                <img width="170" src="{{ asset('files/default.jpg') }}" alt="">
-            {% endif %}
-            {{ find_thing.country }}
-            {{ find_thing.thing }}
-            {{ find_thing.city }}
-            {{ find_thing.area }}
-            {{ find_thing.street }}
-            {{ find_thing.description }}
-            {{ find_thing.createdAt|date }}
-            <a href="{{ find_thing.userId }}">{{ find_thing.userName }}</a>
-        {% endfor %}
+        <div id="find_section">
+            <h1>Я нашел</h1>
+            {% for find_thing in find_things %}
+                <div class="find_block">
+                    {% if find_thing.filename %}
+                        <img width="170" src="{{ asset('files/') }}{{ find_thing.fileName }}" alt="">
+                    {% else %}
+                        <img width="170" src="{{ asset('files/default.jpg') }}" alt="">
+                    {% endif %}
+                    {{ find_thing.country }}
+                    {{ find_thing.thing }}
+                    {{ find_thing.city }}
+                    {{ find_thing.area }}
+                    {{ find_thing.street }}
+                    {{ find_thing.description }}
+                    {{ find_thing.createdAt|date }}
+                    Количество совпадений: <a class="count_match" href="#"></a>
+                    <input id="find_thing_id" type="hidden" name="find_thing_id" value="{{ find_thing.id }}">
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 {% endblock %}

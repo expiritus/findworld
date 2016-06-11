@@ -56,28 +56,35 @@ class FindLostController extends Controller
      * @Route("/personal_area/search/{action}/{data_id}", name="search")
      *
      */
-    public function searchAction($action, $data_id){
+    public function searchAction(Request $request, $action, $data_id){
         $entity = ucfirst($action);
         $repository = "AdminBundle:".$entity;
         $desired_thing_data = $this->getDoctrine()->getRepository($repository)->desiredThing($data_id, $repository);
         if($entity == 'Lost'){
             $reverse_entity = 'Find';
-            $all_find_lost_things = $this->getDoctrine()->getRepository('AdminBundle:Find')->getAllThings();
+            $repository = 'AdminBundle:'.$reverse_entity;
+            $all_find_lost_things = $this->getDoctrine()->getRepository($repository)->getAllThings();
         }
 
         if($entity == 'Find'){
             $reverse_entity = 'Lost';
-            $all_find_lost_things = $this->getDoctrine()->getRepository('AdminBundle:Lost')->getAllThings();
+            $repository = 'AdminBundle:'.$reverse_entity;
+            $all_find_lost_things = $this->getDoctrine()->getRepository($repository)->getAllThings();
         }
 
         $search = new SearchController($desired_thing_data, $all_find_lost_things);
         $search->search();
         $ids_match_things = $search->getIdsMatchThings();
+        if($request->isXmlHttpRequest()){
+            if(!$ids_match_things){
+                die(json_encode(0));
+            }else{
+                die(json_encode(count($ids_match_things)));
+            }
+
+        }
         $repository = 'AdminBundle:'.$reverse_entity;
         $match_things = $this->getDoctrine()->getRepository($repository)->getMatchByIds($ids_match_things);
-//        echo "<pre>";
-//        print_r($match_things);
-//        die();
         return $this->render('PersonalAreaBundle:search:index.html.twig', array(
             'match_things' => $match_things
         ));

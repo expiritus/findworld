@@ -16,7 +16,9 @@
             {{ match_thing.street }}
             {{ match_thing.description }}
             {{ match_thing.createdAt|date }}
-            <a href="{{ match_thing.userId }}">{{ match_thing.userName }}</a>
+            Нашел: <a href="/user/{{ match_thing.userId }}">{{ match_thing.userName }}</a>
         {% endfor %}
+    {% else %}
+        Пока похожих вещей нет, но если кто то ее найдет, то мы сообщим вам по Eamil. Спасибо что вы с нами.
     {% endif %}
 {% endblock %}
